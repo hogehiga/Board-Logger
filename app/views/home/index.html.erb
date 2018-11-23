@@ -5,22 +5,11 @@
   </head>
   <body>
     <div class="jumbotron">
-      <div class="AppExplanation">
+      <div class="App">
         <h1>Board Logger</h1>
-        <h2>サーフィンをする人のための記録アプリ
-            <br>
-            <br>&or;
-            <br>&or;
-        </h2>
+        <h2>サーフィンをする人のための記録アプリ</h2>
       </div>
     </div>
-    <div class="LogIn_SignUp">
-      <!-- Home画面(仮) Userを作成するページへ遷移する -->
-      <%= link_to "Sign up", new_user_path, class: "btn btn-info btn-lg" %>
-
-      <!-- ログインをするページへ遷移する -->
-      <%= link_to "Log in", login_path,class: "btn btn-success btn-lg" %>
-
-    </div>
+    <%= link_to "Sign up", new_user_path, class: "btn btn-info btn-lg" %>
   </body>
 </html>
