@@ -114,6 +114,7 @@
       </div><!--タグ・メニューに含めるために-->
       <div class="tab-pane" id="atmosphere"><!--タグ・メニューに含めるために-->
 
+
         <h3>サーフポイントの雰囲気</h3>
           <!-- サーフポイントの雰囲気を出力するためのテーブル -->
           <table class="table table-bordered">
@@ -144,7 +145,7 @@
               <td><%= manner.entry %></td>
               <td>
               <% @photo.where(manner_id: manner.id).each do |d| %>
-                  <%= image_tag d.image.url if d.image? %>
+                  <%= image_tag "data:image/jpeg;base64,#{d.image}",:size =>'240x220' if d.image? %>
               <% end %>
               <%= form_for Photo.new(:manner_id => manner.id), :url => photo_create_path do |f| %>
                 <%= f.file_field :image %>
