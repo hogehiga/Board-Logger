@@ -82,6 +82,11 @@
         font-size:60px;
     }
 
+    .selectWavinfo{//波情報をプルダウン形式で入力するところに影響
+        margin-left:20px;
+    }
+
+
 
     // boards/index.html.erb boards/show.html.erb に影響
     .form-inline {//bootstrapの機能
