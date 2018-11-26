@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :boards, dependent: :destroy
+  has_many :middles, dependent: :destroy
   has_many :active_relationships, class_name:  "Relationship", foreign_key: "follower_id", dependent:   :destroy
   has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id", dependent:   :destroy
   has_many :following, through: :active_relationships, source: :followed
@@ -17,9 +18,9 @@ class User < ApplicationRecord
 
   class << self
     #検索する
-    def search(search)
+    def search(search, user)
       if search
-        User.where("name LIKE ?", "%#{search}%")
+        User.where("name LIKE ?", "%#{search}%").where.not(name: "#{user}")
       end
     end
     # 渡された文字列のハッシュ値を返す
