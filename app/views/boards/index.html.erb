@@ -71,12 +71,6 @@
             </ul>
         <% end %>
 
-        <% if @user == current_user %>
-          <%= link_to "Log out", logout_path, method: :delete %>
-        <% else %>
-          <%= link_to "Homeに戻る", root_path %>
-        <% end %>
-
       <% else %>
 
         <div class = "showPC"><!--PCの画面とスマホの画面を分けたいから-->

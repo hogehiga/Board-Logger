@@ -23,7 +23,7 @@ class RelationshipsController < ApplicationController
      end
 
      if judge == 0
-       user = Relationship.find(followed_id: params[:followed_id]).followed
+       user = Relationship.find_by(followed_id: params[:followed_id]).followed
        current_user.unfollow(user)
      end
 
