@@ -6,11 +6,13 @@ class BoardsController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers
     @boards = Board.where(user_id: params[:id])
+    @middle = Middle.where(user_id: current_user.id)
     @newBoard = Board.new(user_id: params[:id])
   end
 
   def show
     @board = Board.find(params[:id])
+    @user = @board.user
     @wave = Wave.where(board_id: params[:id])
     @newWave = Wave.new(:board_id => params[:id])
 
@@ -34,7 +36,11 @@ class BoardsController < ApplicationController
 
   def search
     @users = User.all
-    @other = User.search(params[:search])
+    @other = User.search(params[:search], current_user.name)
+
+    @board_id = params[:board_id]
+    @boards = Board.where(user_id: params[:id])
+
   end
 
   def create
@@ -53,6 +59,7 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @board.destroy
     flash[:success] = "Board deleted"
+
     redirect_to board_path(@board.user_id)
   end
 
@@ -71,15 +78,10 @@ class BoardsController < ApplicationController
     end
   end
 
-  # 正しいユーザーかどうか確認
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(board_path(current_user.id)) unless current_user?(@user)
-  end
-
   # ログインしているユーザーのボードかどうか確認
   def correct_board
     @board = Board.find(params[:id])
     redirect_to(board_path(current_user.id)) unless current_board?(@board) || accessfollow?(@board.user)
   end
+
 end

@@ -23,15 +23,17 @@
         });
       </script>
 
-      <!-- google mapを表示するための住所入力フォーム -->
-      <%= form_for @newMap, :url => gmap_create_path do |form| %>
-        <div class="form-inline" style="margin-top: 15px;">
-          <%= form.label "住所" %>
-          <%= form.text_field :address, class: "form-control mb-2 mr-sm-2" , placeholder: "住所"%>
-          <%= form.hidden_field :board_id %>
-          <%= form.submit "google Mapを表示", class: "btn btn-primary mb-2 btn-lg"%>
-        </div>
-      <% end %>
+<!--  <% if @user == current_user %>
+        <%= render 'shared/can_edit_board' %>
+      <% else %>
+        <%= render 'shared/cannot_edit_board' %>
+      <% end %> -->
+
+
+      <p>
+        <%= link_to "戻る", root_path %>
+      </p>
+    </div>
 
     <!-- タブ・メニュー --><!--波情報，サーフポイントの雰囲気，エントリーの仕方 をタブ(bootstrap)でまとめる-->
     <ul class="nav nav-tabs">
@@ -175,7 +177,7 @@
       <%= link_to "戻る", board_path(@board.user_id) %>
     </p>
   </div>
-
+    
   </div><!--Bootstrapのグリッドシステムの対象範囲-->
   </body>
 </html>
