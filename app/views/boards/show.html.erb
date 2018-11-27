@@ -54,12 +54,13 @@
               <th>ウネリのサイズ</th>
               <th>ウネリの向き</th>
               <th>ブレイクの種類</th>
-              <th>コメント</th>
+              <!--<td>コメント</td> -->
             </tr>
+
 
             <% @wave.each do |wave| %>
               <tr>
-                <td><%= wave.created_at %></td>
+                <td rowspan="2"><%= wave.created_at %> </td>
                 <td><%= wave.status %></td>
                 <td><%= wave.windway %></td>
                 <td><%= wave.shore %></td>
@@ -67,7 +68,9 @@
                 <td><%= wave.swell %></td>
                 <td><%= wave.swellway %></td>
                 <td><%= wave.bottom %></td>
-                <td><%= wave.comment %></td>
+              </tr>
+                <tr>
+                <td colspan="7"><%= wave.comment %></td>
               </tr>
             <% end %>
           </table>
