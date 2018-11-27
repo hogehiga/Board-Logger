@@ -60,12 +60,12 @@
           <% end %>
         </ul>
 
-        <% if @user == current_user %>
-          <h1 style="padding-left: 100px">共有されているユーザー</h1>
+        <% if @user == current_user and Middle.find_by(user_id: params[:id]) %>
+          <h1 style="padding-left: 100px">共有されているボード</h1>
             <ul class="list-group" style="max-width: 300px;">
-              <% @users.each do |users| %>
+              <% @middle.each do |middle| %>
                 <li class="list-group-item">
-                  <%= link_to users.name, board_path(users.id) %>
+                  <%= link_to middle.board.location, boards_show_path(middle.board.id) %>
                 </li>
               <% end %>
             </ul>

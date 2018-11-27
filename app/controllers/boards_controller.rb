@@ -6,7 +6,7 @@ class BoardsController < ApplicationController
     @user = User.find(params[:id])
     @users = @user.followers
     @boards = Board.where(user_id: params[:id])
-    @followers = Middle.where(user_id: current_user.id)
+    @middle = Middle.where(user_id: current_user.id)
     @newBoard = Board.new(user_id: params[:id])
   end
 
@@ -58,6 +58,22 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @board.destroy
     flash[:success] = "Board deleted"
+
+    middle = Middle.where(user_id: params[:user_id])
+    judge = 0
+
+    middle.each do |f|
+      if f.board.user == current_user
+        judge = 1
+        break
+      end
+    end
+
+    if judge == 0
+      user = Relationship.find(params[:id]).followed
+      current_user.unfollow(user)
+    end
+
     redirect_to board_path(@board.user_id)
   end
 
