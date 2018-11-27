@@ -9,24 +9,24 @@ class RelationshipsController < ApplicationController
   end
 
   def destroy
-    board = Middle.find_by(user_id: params[:user_id], board_id: params[:board_id])
-    board.delete
-    board.save
+    @board = Middle.find_by(user_id: params[:followed_id], board_id: params[:board_id])
+    @board.delete
 
-    middle = Middle.where(user_id: params[:user_id])
-    judge = 0
+     middle = Middle.where(user_id: params[:followed_id])
+     judge = 0
 
-    middle.each do |f|
-      if f.board.user == current_user
-        judge = 1
-        break
-      end
-    end
+     middle.each do |f|
+       if f.board.user == current_user
+         judge = 1
+         break
+       end
+     end
 
-    if judge == 0
-      user = Relationship.find(params[:id]).followed
-      current_user.unfollow(user)
-    end
+     if judge == 0
+       user = Relationship.find(followed_id: params[:followed_id]).followed
+       current_user.unfollow(user)
+     end
+
     redirect_to board_path(current_user.id)
   end
 end

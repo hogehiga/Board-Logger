@@ -13,10 +13,10 @@
       <% unless @other.nil? %>
         <% @other.each do |user| %>
           <li class="list-group-item">
-            <%= link_to user.name, board_path(user.id) %>
+            <%= user.name %>
             <% if Middle.find_by(user_id: user.id, board_id: @board_id) %><!-- 共有してたら．．． -->
-              <%= form_for(current_user.active_relationships.find_by(followed_id:user.id), html: { method: :delete }) do |f| %>
-                <%= hidden_field_tag :user_id,  user.id %>
+              <%= form_for(current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete }) do |f| %>
+                <%= hidden_field_tag :followed_id,  user.id %>
                 <%= hidden_field_tag :board_id,  @board_id %>
                 <%= f.submit "共有解除", class: "btn btn-danger " %>
               <% end %>
