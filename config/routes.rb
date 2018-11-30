@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'explain/explain'
   root 'home#index'
 
   get    '/login',   to: 'sessions#new',     as: 'login'
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'explain/explain'
   get 'boards/search', to: 'boards#search', as: 'boards_search'
   get 'boards/:id',  to: 'boards#index', as: 'board'
   get 'boards/show/:id', to: 'boards#show', as: 'boards_show'

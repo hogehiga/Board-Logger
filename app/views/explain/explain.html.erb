@@ -1,12 +1,49 @@
 <html>
     <head>
-
+    <!--scssを読み込む-->
+    <%= stylesheet_link_tag "explain", :media => "all" %>
     </head>
-    aiueo
-
-    <%= link_to "Home画面へ", root_path %>
 
     <body>
+    <!--
+        <%= link_to "Home画面へ", root_path %>
+    -->
+
+        <div class="BoardLogger">
+            <h1>BoardLogger</h1>
+            <h2>サーファーのための記録アプリ</h2>
+        </div>
+
+        <!--横線-->
+        <HR align=center SIZE=2 width="100%">
+
+        <!--説明1-->
+        <div class ="explain_1">
+            <!--説明1の画像-->
+            <%= image_tag "explain_App/HowTo_WaveInfo.png"%>
+            <br>
+            <!--説明1の説明文-->
+            <h3>サーフポイントのエントリー情報を記録できる</h3>
+        </div>
+
+        <!--横線-->
+        <HR align=center SIZE=2 width="100%">
+
+        <!--説明2-->
+        <div class ="explain_2">
+            <%= image_tag "explain_App/HowTo_Share.png"%>
+            <h3>共有したいサーファーと，エントリー情報を共有できる</h3>
+        </div>
+        
+        <!--横線-->
+        <HR align=center SIZE=2 width="100%">
+
+        <div class = "Button"><!--ボタンを中央揃えにするために-->
+            <!--SignUpボタン-->
+            <%= link_to "Sign up", new_user_path, class: "btn btn-info " , id:"SignUp" %>
+        </div>
+
+
     </body>
 
 </html>

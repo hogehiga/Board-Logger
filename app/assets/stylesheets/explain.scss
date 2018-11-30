@@ -1,3 +1,65 @@
 // Place all the styles related to the Explain controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@media screen and (min-device-width:768px){
+    //画面サイズが768px以上の場合読み込む
+}
+
+
+
+// スマホ用に
+@media screen and (max-device-width:767px) {
+    //　画面サイズが767px以下の場合読み込む
+
+    .BoardLogger{
+        h1{
+            font-size:13vw; //vw 画面の横のサイズに合わせて文字のサイズを変更
+        }
+        h2{
+            font-size:5vw;
+        }
+        background-color: lightblue;
+    }
+
+    //説明1について
+    .explain_1{
+        //画像を調整
+        img{
+            width:80vw;//画面の横サイズの80%に合わせる
+            height:auto;
+        }
+        //説明文を調整
+        h3{
+            font-size:4vw;
+        }
+    }
+
+    //説明2について　
+    .explain_2{
+        img{
+            width:80vw;//画面の横サイズの80%に合わせる
+            height:auto;
+        }
+        h3{
+            font-size:4vw;
+        }
+    }
+
+
+    //SignUpボタンを調整
+    .btn#SignUp{
+
+        //ボタンを中央揃えにする
+        width:50%; //ボタンの横の大きさを指定
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+        font-size:70px;//ボタンの中の文字の大きさを変更
+        text-align: center;
+
+        margin-bottom:4vh;
+    }
+
+}
