@@ -1,0 +1,147 @@
+<!-- google mapを表示するための住所入力フォーム -->
+<%= form_for @newMap, :url => gmap_create_path do |form| %>
+  <div class="form-inline" style="margin-top: 15px;">
+    <%= form.label "住所" %>
+    <%= form.text_field :address, class: "form-control mb-2 mr-sm-2" , placeholder: "住所"%>
+    <%= form.hidden_field :board_id %>
+    <%= form.submit "google Mapを表示", class: "btn btn-primary mb-2 btn-lg"%>
+  </div>
+<% end %>
+
+<!-- タブ・メニュー --><!--波情報，サーフポイントの雰囲気，エントリーの仕方 をタブ(bootstrap)でまとめる-->
+<ul class="nav nav-tabs">
+  <li><a href="#WaveInfo" data-toggle="tab">波情報</a></li>
+  <li><a href="#atmosphere" data-toggle="tab">サーフポイントの雰囲気</a></li>
+  <li><a href="#HowToEntry" data-toggle="tab">エントリーの仕方</a></li>
+</ul>
+
+<div class="tab-content"> <!--タグ・メニューに含めるために-->
+  <div class="tab-pane" id="WaveInfo"><!--タグ・メニューに含めるために-->
+    <h3>波情報</h3>
+    <!-- 波情報を出力するためのテーブル -->
+      <table class="table table-bordered">
+        <tr>
+          <th>日付</th>
+          <th>サイズ</th>
+          <th>風向き</th>
+          <th>何ショア</th>
+          <th>風速</th>
+          <th>ウネリのサイズ</th>
+          <th>ウネリの向き</th>
+          <th>ブレイクの種類</th>
+          <!--<td>コメント</td> -->
+        </tr>
+
+
+        <% @wave.each do |wave| %>
+          <tr>
+            <td rowspan="2"><%= wave.created_at %> </td>
+            <td><%= wave.status %></td>
+            <td><%= wave.windway %></td>
+            <td><%= wave.shore %></td>
+            <td><%= wave.windpower %></td>
+            <td><%= wave.swell %></td>
+            <td><%= wave.swellway %></td>
+            <td><%= wave.bottom %></td>
+          </tr>
+            <tr>
+            <td colspan="7"><%= wave.comment %></td>
+          </tr>
+        <% end %>
+      </table>
+    <!-- 波情報を入力するための入力フォーム -->
+    <%= form_for @newWave, :url => wave_create_path do |f| %>
+      <div class="form-horizontal">
+        <%=f.label "サイズ"%><br>
+        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
+          <%=f.select:status, [["",""],["腰","腰"],["腹","腹"],["胸","胸"],["頭","頭"],["頭オーバー","頭オーバー"]] %>
+        </div>
+        <%= f.label "うねりの大きさ" %><br>
+        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
+          <%=f.select:swell, [["",""],["~0.1","~0.1"],["~1.5","~1.5"],["~2.0","~2.0"],["~2.5","~2.5"],["~3.0","~3.0"]] %>
+        </div>
+        <%= f.label "うねりの向き" %><br>
+        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
+          <%=f.select:swellway, [["",""],["北","北"],["北東","北東"],["東","東"],["南東","南東"],["南","南"],["南西","南西"],["西","西"],["北西","北西"]] %>
+        </div>
+        <%= f.label "風向き" %><br>
+        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
+          <%=f.select:windway, [["",""],["北","北"],["北東","北東"],["東","東"],["南東","南東"],["南","南"],["南西","南西"],["西","西"],["北西","北西"]] %>
+        </div>
+        <%=f.label "何ショア？"%><br>
+        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
+          <%=f.select:shore, [["",""],["オフショア","オフショア"],["サイドオフ","サイドオフ"],["サイドオン","サイドオン"],["オンショア","オンショア"]] %>
+        </div>
+        <%=f.label "風の強さ"%><br>
+        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
+          <%=f.select:windpower, [["",""],["~2.0","~2.0"],["~4.0","~4.0"],["~6.0","~6.0"],["~8.0","~8.0"]] %>
+        </div>
+        <%=f.label "ブレイクの種類"%><br>
+        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
+          <%=f.select:windpower, [["",""],["リーフ","リーフ"],["ビーチ","ビーチ"]] %>
+        </div>
+        <%= f.label "コメント" %><br>
+        <div class = "selectWavinfo"><!--コメントの位置を調整するために(プルダウン形式と同じ調整)-->
+          <%= f.text_field :comment, class: "form-control mb-2 mr-sm-2", placeholder: "コメント"%>
+        </div>
+        <%= f.hidden_field :board_id %>
+        <%= f.submit "投稿" , class: "btn btn-primary mb-2 btn-lg"%>
+      </div>
+    <% end %>
+
+  </div><!--タグ・メニューに含めるために-->
+  <div class="tab-pane" id="atmosphere"><!--タグ・メニューに含めるために-->
+
+
+    <h3>サーフポイントの雰囲気</h3>
+      <!-- サーフポイントの雰囲気を出力するためのテーブル -->
+      <table class="table table-bordered">
+      <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
+          <tr>
+            <td><%= @mood.mood%></td>
+          </tr>
+      <% end %>
+      </table>
+
+    <!-- サーフポイントの雰囲気を入力するための入力フォーム -->
+    <%= form_for @newMood, :url => mood_create_path do |f| %>
+      <div class="form-horizontal">
+        <%= f.text_field :mood, class: "form-control mb-2 mr-sm-2" , placeholder: "サーフポイント雰囲気" %>
+        <%= f.hidden_field :board_id %>
+        <%= f.submit "編集", class: "btn btn-primary mb-2 btn-lg"%>
+      </div>
+    <% end %>
+
+  </div><!--タグ・メニューに含めるために-->
+  <div class="tab-pane" id="HowToEntry"><!--タグ・メニューに含めるために-->
+
+    <h3>エントリーの仕方</h3>
+    <!-- エントリを出力するためのテーブル -->
+    <table class="table table-bordered">
+      <% @manner.each do |manner| %>
+        <tr>
+          <td><%= manner.entry %></td>
+          <td>
+          <% @photo.where(manner_id: manner.id).each do |d| %>
+              <%= image_tag "data:image/jpeg;base64,#{d.image}",:size =>'240x220' if d.image? %>
+          <% end %>
+          <%= form_for Photo.new(:manner_id => manner.id), :url => photo_create_path do |f| %>
+            <%= f.file_field :image %>
+            <%= f.hidden_field :manner_id %>
+            <%= f.submit "写真を投稿する!", class: "btn btn-primary mb-2" %>
+          <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <!-- エントリを入力するための入力フォーム -->
+    <%= form_for @newManner, :url => boards_createManner_path do |f| %>
+      <div class="form-horizontal">
+        <%= f.text_field :entry, class: "form-control mb-2 mr-sm-2" , placeholder: "エントリーの仕方"%>
+        <%= f.hidden_field :board_id %>
+        <%= f.submit "投稿", class: "btn btn-primary mb-2 btn-lg" %>
+      </div>
+    <% end %>
+
+  </div><!--タグ・メニューに含めるために-->
+</div><!--タグ・メニューに含めるために-->

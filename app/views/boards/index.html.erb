@@ -42,36 +42,33 @@
         <!--<ul class="list-group"> -->
           <% @boards.each do |boards| %>
           <li class="list-group-item">
-            <%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
             <% if @user == current_user %>
+              <%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
+              <%= form_for(boards, url: boards_search_path, html: {method: "get"}) do %>
+                <%= hidden_field_tag :board_id, boards.id %>
+                <%= submit_tag '共有するユーザの選択へ' %>
+              <% end %>
               <%= link_to "削除する", board_path(boards.id), method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%>
+            <% else %>
+              <% @followers.each do |f| %>
+                <% if f.board_id == boards.id %>
+                    <%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
+                <% end %>
+              <% end %>
             <% end %>
           </li>
           <% end %>
         </ul>
 
-        <% if @user == current_user %>
-          <h1 style="padding-left: 100px">共有されているユーザー</h1>
+        <% if @user == current_user and Middle.find_by(user_id: params[:id]) %>
+          <h1 style="padding-left: 100px">共有されているボード</h1>
             <ul class="list-group" style="max-width: 300px;">
-              <% @users.each do |users| %>
+              <% @middle.each do |middle| %>
                 <li class="list-group-item">
-                  <%= link_to users.name, board_path(users.id) %>
+                  <%= link_to middle.board.location, boards_show_path(middle.board.id) %>
                 </li>
               <% end %>
             </ul>
-        <% end %>
-
-        <% if @user == current_user %>
-        <!-- ユーザーを検索フォームへ遷移するボタン -->
-        <ul class="list-group" style="max-width: 320px; padding-top: 50px;">
-          <li class="list-group-item">
-            <%= link_to "ユーザーを検索する", boards_search_path %>
-          </li>
-        </ul>
-
-          <%= link_to "Log out", logout_path, method: :delete %>
-        <% else %>
-          <%= link_to "Homeに戻る", root_path %>
         <% end %>
 
       <% else %>

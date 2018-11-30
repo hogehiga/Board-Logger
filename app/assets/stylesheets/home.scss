@@ -29,15 +29,18 @@
         top:0%;
         bottom:0%;
 
+        margin-top:50px;    //header が50pxあるから　
+        margin-bottom:0%;   //jumbotronのデフォルトでは、bargin-bottomが設定されているっぽい
+
         background: image-url("surfing.jpg");
         background-size: cover;
         background-position: center 60%;
-        //padding-bottom: 200px;
         z-index:-1; //背面に表示する
 
-        .AppExplanation{
+        .App{
             position: absolute;
-            top: 65%;
+            top: 50%;
+            bottom: 70%;
 
             h1{
                 font-size:90px;
@@ -52,19 +55,43 @@
             }
         }
     }
-
-    .LogIn_SignUp{
-        position: relative;
-        top:100vh; //元の位置より、画面の縦サイズ下に移動
-        background-color:lightblue;
-
-        padding-bottom:20px;
-    }
-
-    .btn{
+   .btn{
         font-size:70px;//ボタンの中の文字の大きさを変更
-        margin-top:20px;
-        margin-left:20px;
-        margin-right:20px;
+        position: fixed;
+        top: 80%;
+        left: 25%;
+        right: 25%;
     }
+/*//説明を載せる時
+    //下矢印の位置を設定
+    .glyphicon{
+        font-size:5vh;//画面のたての長さの5%
+        text-align:center; 
+        color:white;
+    }
+    #arrow_bottom1{
+        position: fixed;
+        top:91%; 
+        bottom:95%;
+        left:25%;
+        right:25%;
+    }
+    #arrow_bottom2{
+        position: fixed;
+        top:95%; 
+        bottom:100%;
+        left:25%;
+        right:25%;
+    }
+    .Explain_arrow_bottom{
+        position: fixed;
+        top:91%;
+        bottom:98%;
+        left:60%;
+        right:100%;
+
+        color:white;
+    }
+*/
+
 }

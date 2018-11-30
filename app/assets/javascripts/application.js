@@ -16,3 +16,7 @@
 //= require gmaps/google
 //= require turbolinks
 //= require_tree .
+
+//headerでドロッブダウン機能を有効にするために
+//= require jquery
+//= require bootstrap

@@ -5,6 +5,7 @@
       <!-- ユーザーの検索フォーム -->
       <%= form_tag(boards_search_path,:method => 'get') do %>
         <%= text_field_tag :search %>
+        <%= hidden_field_tag :board_id,  @board_id %>
         <%= submit_tag 'Search', :name => nil %>
       <% end %>
 
@@ -12,14 +13,17 @@
       <% unless @other.nil? %>
         <% @other.each do |user| %>
           <li class="list-group-item">
-            <%= link_to user.name, board_path(user.id) %>
-            <% if current_user.following?(user) %><!-- 共有してたら．．． -->
-              <%= form_for(current_user.active_relationships.find_by(followed_id:user.id), html: { method: :delete }) do |f| %>
+            <%= user.name %>
+            <% if Middle.find_by(user_id: user.id, board_id: @board_id) %><!-- 共有してたら．．． -->
+              <%= form_for(current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete }) do |f| %>
+                <%= hidden_field_tag :followed_id,  user.id %>
+                <%= hidden_field_tag :board_id,  @board_id %>
                 <%= f.submit "共有解除", class: "btn btn-danger " %>
               <% end %>
             <% else %><!-- 共有していなかったら．．． -->
               <%= form_for(current_user.active_relationships.build) do |f| %>
-                <div><%= hidden_field_tag :followed_id, user.id %></div>
+                <div><%= hidden_field_tag :followed_id, user.id %>
+                  <%= hidden_field_tag :board_id,  @board_id %></div>
                 <%= f.submit "共有する", class: "btn btn-primary" %>
               <% end %>
             <% end %>
