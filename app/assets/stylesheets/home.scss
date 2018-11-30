@@ -6,7 +6,7 @@
 @media screen and (min-device-width:768px){
     //画面サイズが768px以上の場合読み込む
     .jumbotron{
-        background: image-url("surfing.jpg");
+        background: image-url("jeremy-bishop-unsplash.jpg");
         background-size: cover;
         background-position: center 60%;
         padding-bottom: 200px;
@@ -32,7 +32,7 @@
         margin-top:50px;    //header が50pxあるから　
         margin-bottom:0%;   //jumbotronのデフォルトでは、bargin-bottomが設定されているっぽい
 
-        background: image-url("surfing.jpg");
+        background: image-url("jeremy-bishop-unsplash.jpg");
         background-size: cover;
         background-position: center 60%;
         z-index:-1; //背面に表示する
