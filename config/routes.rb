@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'explain/explain'
   root 'home#index'
 
   get    '/login',   to: 'sessions#new',     as: 'login'

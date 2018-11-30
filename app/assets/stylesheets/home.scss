@@ -55,10 +55,21 @@
             }
         }
     }
-   .btn{
+    //SignUpボタンを調整
+   .btn#SignUp{
         font-size:70px;//ボタンの中の文字の大きさを変更
         position: fixed;
-        top: 80%;
+        top:78%;
+        bottom: 12%;
+        left: 25%;
+        right: 25%;
+    }
+    //HowtoUseボタンを調整
+    .btn#HowToUse{
+        font-size:70px;//ボタンの中の文字の大きさを変更
+        position: fixed;
+        top: 89%;
+        bottom: 1%;
         left: 25%;
         right: 25%;
     }
