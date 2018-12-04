@@ -19,9 +19,9 @@ Rails.application.routes.draw do
 
   post 'waves/create', to: 'wave#create', as: 'wave_create'
   post 'gmaps/create', to: 'gmap#create', as: 'gmap_create'
-  post 'boards/createManner', to: 'boards#createManner', as: 'boards_createManner'
   post 'photos/create',  to: 'photos#create',  as: 'photo_create'
   post 'waves/mood', to: 'wave#createmood', as: 'mood_create'
+  resources :manners, only: [:create]
 
   resources :users do
     member do

@@ -135,7 +135,7 @@
       <% end %>
     </table>
     <!-- エントリを入力するための入力フォーム -->
-    <%= form_for @newManner, :url => boards_createManner_path do |f| %>
+    <%= form_for @newManner do |f| %>
       <div class="form-horizontal">
         <%= f.text_field :entry, class: "form-control mb-2 mr-sm-2" , placeholder: "エントリーの仕方"%>
         <%= f.hidden_field :board_id %>

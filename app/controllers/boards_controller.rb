@@ -63,11 +63,6 @@ class BoardsController < ApplicationController
     redirect_to board_path(@board.user_id)
   end
 
-  def createManner
-    @manner = Manner.new(params[:manner].permit(:board_id, :entry))
-    @manner.save
-    redirect_to boards_show_path(params[:manner]['board_id'])
-  end
 
   # beforeアクション
   # ログイン済みユーザーかどうか確認
