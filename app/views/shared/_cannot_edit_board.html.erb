@@ -47,7 +47,7 @@
       <td><%= manner.entry %></td>
       <td>
         <% @photo.where(manner_id: manner.id).each do |d| %>
-          <%= image_tag d.image.url if d.image? %>
+          <img src=<%= "data:image/jpeg;base64, #{d.image}" %> />
         <% end %>
         <%= form_for Photo.new(:manner_id => manner.id), :url => photo_create_path do |f| %>
           <%= f.file_field :image %>
