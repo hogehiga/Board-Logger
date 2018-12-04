@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   post 'photos/create',  to: 'photos#create',  as: 'photo_create'
   post 'waves/mood', to: 'wave#createmood', as: 'mood_create'
   resources :manners, only: [:create]
+  resources :middles, only: [:create, :destroy]
 
   resources :users do
     member do

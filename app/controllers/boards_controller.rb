@@ -40,6 +40,7 @@ class BoardsController < ApplicationController
 
     @board_id = params[:board_id]
     @boards = Board.where(user_id: params[:id])
+    @middle = Middle.new
 
   end
 
