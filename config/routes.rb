@@ -20,14 +20,14 @@ Rails.application.routes.draw do
 
   post 'waves/create', to: 'wave#create', as: 'wave_create'
   post 'gmaps/create', to: 'gmap#create', as: 'gmap_create'
-  post 'boards/createManner', to: 'boards#createManner', as: 'boards_createManner'
   post 'photos/create',  to: 'photos#create',  as: 'photo_create'
   post 'waves/mood', to: 'wave#createmood', as: 'mood_create'
+  resources :manners, only: [:create]
+  resources :middles, only: [:create, :destroy]
 
   resources :users do
     member do
       get :following, :followers
     end
   end
-  resources :relationships,       only: [:create, :destroy]
 end

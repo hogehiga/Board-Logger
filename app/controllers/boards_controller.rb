@@ -40,6 +40,7 @@ class BoardsController < ApplicationController
 
     @board_id = params[:board_id]
     @boards = Board.where(user_id: params[:id])
+    @middle = Middle.new
 
   end
 
@@ -63,11 +64,6 @@ class BoardsController < ApplicationController
     redirect_to board_path(@board.user_id)
   end
 
-  def createManner
-    @manner = Manner.new(params[:manner].permit(:board_id, :entry))
-    @manner.save
-    redirect_to boards_show_path(params[:manner]['board_id'])
-  end
 
   # beforeアクション
   # ログイン済みユーザーかどうか確認
@@ -81,7 +77,7 @@ class BoardsController < ApplicationController
   # ログインしているユーザーのボードかどうか確認
   def correct_board
     @board = Board.find(params[:id])
-    redirect_to(board_path(current_user.id)) unless current_board?(@board) || accessfollow?(@board.user)
+    redirect_to(board_path(current_user.id)) unless current_board?(@board) || accessboard(current_user)
   end
 
 end

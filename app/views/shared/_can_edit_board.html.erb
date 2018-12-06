@@ -78,7 +78,7 @@
         </div>
         <%=f.label "ブレイクの種類"%><br>
         <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
-          <%=f.select:windpower, [["",""],["リーフ","リーフ"],["ビーチ","ビーチ"]] %>
+          <%=f.select:bottom, [["",""],["リーフ","リーフ"],["ビーチ","ビーチ"]] %>
         </div>
         <%= f.label "コメント" %><br>
         <div class = "selectWavinfo"><!--コメントの位置を調整するために(プルダウン形式と同じ調整)-->
@@ -135,7 +135,7 @@
       <% end %>
     </table>
     <!-- エントリを入力するための入力フォーム -->
-    <%= form_for @newManner, :url => boards_createManner_path do |f| %>
+    <%= form_for @newManner do |f| %>
       <div class="form-horizontal">
         <%= f.text_field :entry, class: "form-control mb-2 mr-sm-2" , placeholder: "エントリーの仕方"%>
         <%= f.hidden_field :board_id %>
