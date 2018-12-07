@@ -43,7 +43,7 @@
           <% @boards.each do |boards| %>
           <li class="list-group-item">
             <% if @user == current_user %>
-              <%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
+              <%= link_to boards.location, boards_show2_path(boards.id), style: "margin-left: 15px" %>
               <%= form_for(boards, url: boards_search_path, html: {method: "get"}) do %>
                 <%= hidden_field_tag :board_id, boards.id %>
                 <%= submit_tag '共有するユーザの選択へ' %>
@@ -65,7 +65,7 @@
             <ul class="list-group" style="max-width: 300px;">
               <% @middle.each do |middle| %>
                 <li class="list-group-item">
-                  <%= link_to middle.board.location, boards_show_path(middle.board.id) %>
+                  <%= link_to middle.board.location, boards_show2_path(middle.board.id) %>
                 </li>
               <% end %>
             </ul>
