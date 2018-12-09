@@ -86,10 +86,9 @@
 
 
 
-
-/*
-    //説明1について
-    .explain_1{
+    //使い方の説明
+    //説明について
+    .explain{
         //画像を調整
         img{
             width:80vw;//画面の横サイズの80%に合わせる
@@ -97,18 +96,7 @@
         }
         //説明文を調整
         h3{
-            font-size:4vw;
-        }
-    }
-
-    //説明2について　
-    .explain_2{
-        img{
-            width:80vw;//画面の横サイズの80%に合わせる
-            height:auto;
-        }
-        h3{
-            font-size:4vw;
+            font-size:6vw;
         }
     }
 
@@ -127,6 +115,6 @@
 
         margin-bottom:4vh;
     }
-*/
+
 
 }
