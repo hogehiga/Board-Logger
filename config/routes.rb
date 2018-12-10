@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'boards/search', to: 'boards#search', as: 'boards_search'
   get 'boards/:id',  to: 'boards#index', as: 'board'
   get 'boards/show/:id', to: 'boards#show', as: 'boards_show'
+  get 'boards/show2/:id', to: 'boards#show2', as: 'boards_show2'
+  get 'boards/input/:id', to: 'boards#input', as: 'boards_input'
   post 'boards/create', to: 'boards#create'
   delete 'boards/:id', to: 'boards#destroy'
 
