@@ -17,12 +17,12 @@
                 <!--<li><%= link_to "Settings", '#' %></li> --><!--後々,ユーザによる設定をできるようにするときはここを使う-->
                 <li class="divider"></li>
                 <li>
-                  <%= link_to "Log out", logout_path, method: :delete %>
+                  <%= link_to "ログアウト", logout_path, method: :delete %>
                 </li>
               </ul>
             </li>
           <% else %><!--ログインされていなかったら表示する-->
-            <li><%= link_to "Log in", login_path %></li>
+            <li><%= link_to "ログイン", login_path %></li>
           <% end %>
         </ul>
     </nav>

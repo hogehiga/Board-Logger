@@ -1,12 +1,19 @@
 <html>
+<head>
+  <%= stylesheet_link_tag "boards", :media => "all" %>
+</head>
   <body>
     <div class="box11">
-      <h1 style="margin-left: 100px">ユーザーの検索</h1>
+      <h1>ユーザーの検索</h1>
       <!-- ユーザーの検索フォーム -->
       <%= form_tag(boards_search_path,:method => 'get') do %>
-        <%= text_field_tag :search %>
+      <div class="form-inline">
+        <div class="form-group mb-2">
+          <%= text_field_tag :search %>
+        </div>
         <%= hidden_field_tag :board_id,  @board_id %>
-        <%= submit_tag 'Search', :name => nil %>
+        <%= submit_tag 'Search', :name => nil, class: "btn btn-primary mb-2" %>
+      </div>
       <% end %>
 
       <% unless @other.nil? %>
