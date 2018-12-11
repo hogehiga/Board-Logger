@@ -62,22 +62,12 @@
             <% @manner.each do |manner| %>
               <tr>
                 <td><%= manner.entry %></td>
-                <td>
-                <% @photo.where(manner_id: manner.id).each do |d| %>
-                    <%= image_tag "data:image/jpeg;base64,#{d.image}",:size =>'240x220' if d.image? %>
-                <% end %>
-                <%= form_for Photo.new(:manner_id => manner.id), :url => photo_create_path do |f| %>
-                  <%= f.file_field :image %>
-                  <%= f.hidden_field :manner_id %>
-                  <%= f.submit "写真を投稿する!", class: "btn btn-primary mb-2" %>
-                <% end %>
-                </td>
               </tr>
             <% end %>
           </table>
 
       <p>
-        <%= link_to "戻る", root_path %>
+        <%= link_to "戻る", board_path %>
       </p>
     </div>
 
