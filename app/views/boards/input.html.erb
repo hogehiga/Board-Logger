@@ -8,78 +8,50 @@
     <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
     <div class="box11">
 
-      <h1 style="margin-left: 20px;"><%= @board.location %></h1>
-
-
-
-<!-- タブ・メニュー --><!--波情報，サーフポイントの雰囲気，エントリーの仕方 をタブ(bootstrap)でまとめる-->
-<ul class="nav nav-tabs">
-  <li><a href="#WaveInfo" data-toggle="tab">波情報</a></li>
-  <li><a href="#atmosphere" data-toggle="tab">サーフポイントの雰囲気</a></li>
-  <li><a href="#HowToEntry" data-toggle="tab">エントリーの仕方</a></li>
-</ul>
-
-<div class="tab-content"> <!--タグ・メニューに含めるために-->
-  <div class="tab-pane" id="WaveInfo"><!--タグ・メニューに含めるために-->
+    <h1 style="margin-left: 20px;"><%= @board.location %></h1>
 
     <!-- 波情報を入力するための入力フォーム -->
     <%= form_for @newWave, :url => wave_create_path do |f| %>
-      <div class="form-horizontal">
-        <%=f.label "サイズ"%><br>
-        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
-          <%=f.select:status, [["",""],["腰","腰"],["腹","腹"],["胸","胸"],["頭","頭"],["頭オーバー","頭オーバー"]] %>
-        </div>
-        <%= f.label "うねりの大きさ" %><br>
-        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
-          <%=f.select:swell, [["",""],["~0.1","~0.1"],["~1.5","~1.5"],["~2.0","~2.0"],["~2.5","~2.5"],["~3.0","~3.0"]] %>
-        </div>
-        <%= f.label "うねりの向き" %><br>
-        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
-          <%=f.select:swellway, [["",""],["北","北"],["北東","北東"],["東","東"],["南東","南東"],["南","南"],["南西","南西"],["西","西"],["北西","北西"]] %>
-        </div>
-        <%= f.label "風向き" %><br>
-        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
-          <%=f.select:windway, [["",""],["北","北"],["北東","北東"],["東","東"],["南東","南東"],["南","南"],["南西","南西"],["西","西"],["北西","北西"]] %>
-        </div>
-        <%=f.label "何ショア？"%><br>
-        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
-          <%=f.select:shore, [["",""],["オフショア","オフショア"],["サイドオフ","サイドオフ"],["サイドオン","サイドオン"],["オンショア","オンショア"]] %>
-        </div>
-        <%=f.label "風の強さ"%><br>
-        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
-          <%=f.select:windpower, [["",""],["~2.0","~2.0"],["~4.0","~4.0"],["~6.0","~6.0"],["~8.0","~8.0"]] %>
-        </div>
-        <%=f.label "ブレイクの種類"%><br>
-        <div class = "selectWavinfo"><!--プルダウン形式の位置を調整するために-->
-          <%=f.select:bottom, [["",""],["リーフ","リーフ"],["ビーチ","ビーチ"]] %>
-        </div>
-        <%= f.label "コメント" %><br>
-        <div class = "selectWavinfo"><!--コメントの位置を調整するために(プルダウン形式と同じ調整)-->
-          <%= f.text_field :comment, class: "form-control mb-2 mr-sm-2", placeholder: "コメント"%>
-        </div>
+      <div class="form-group">
+        <%= f.label "サイズ" %>
+        <%= f.select:status, {""=>"", "腰"=>"腰", "腹"=>"腹", "胸"=>"胸", "頭"=>"頭", "頭オーバー"=>"頭オーバー"}, {}, {:class => "form-control"} %>
+
+        <%= f.label "うねりの大きさ" %>
+        <%= f.select:swell, {""=>"", "~0.1"=>"~0.1", "~1.5"=>"~1.5", "~2.0"=>"~2.0", "~2.5"=>"~2.5", "~3.0"=>"~3.0"}, {}, {:class => "form-control"} %>
+
+        <%= f.label "うねりの向き" %>
+        <%=f.select:swellway, {""=>"" ,"北"=>"北", "北東"=>"北東" ,"東"=>"東", "南東"=>"南東", "南"=>"南", "南西"=>"南西" ,"西"=>"西" ,"北西"=>"北西"}, {}, {:class => "form-control"} %>
+
+        <%= f.label "風向き" %>
+        <%=f.select:windway, {""=>"" ,"北"=>"北", "北東"=>"北東" ,"東"=>"東", "南東"=>"南東", "南"=>"南", "南西"=>"南西" ,"西"=>"西" ,"北西"=>"北西"}, {}, {:class => "form-control"} %>
+
+        <%=f.label "何ショア？"%>
+        <%=f.select:shore, {""=>"", "オフショア"=>"オフショア", "サイドオフ"=>"サイドオフ", "サイドオン"=>"サイドオン", "オンショア"=>"オンショア"}, {}, {:class => "form-control"} %>
+
+        <%=f.label "風の強さ"%>
+        <%=f.select:windpower, {""=>"", "~2.0"=>"~2.0", "~4.0"=>"~4.0", "~6.0"=>"~6.0", "~8.0"=>"~8.0"}, {}, {:class => "form-control"} %>
+
+
+        <%=f.label "ブレイクの種類"%>
+        <%=f.select:bottom, {""=>"", "リーフ"=>"リーフ", "ビーチ"=>"ビーチ"}, {}, {:class => "form-control"} %>
+
+        <%=f.label "コメント"%>
+        <%= f.text_field :comment, class: "form-control mb-2 mr-sm-2", placeholder: "コメント"%>
+
         <%= f.hidden_field :board_id %>
-        <%= f.submit "投稿" , class: "btn btn-primary mb-2 btn-lg"%>
+        <%= f.submit "投稿" , class: "btn btn-primary mb-2 btn-sm-2"%>
       </div>
     <% end %>
 
-  </div><!--タグ・メニューに含めるために-->
-  <div class="tab-pane" id="atmosphere"><!--タグ・メニューに含めるために-->
-
-
     <h3>サーフポイントの雰囲気</h3>
-
-
     <!-- サーフポイントの雰囲気を入力するための入力フォーム -->
     <%= form_for @newMood, :url => mood_create_path do |f| %>
       <div class="form-horizontal">
         <%= f.text_field :mood, class: "form-control mb-2 mr-sm-2" , placeholder: "サーフポイント雰囲気" %>
         <%= f.hidden_field :board_id %>
-        <%= f.submit "編集", class: "btn btn-primary mb-2 btn-lg"%>
+        <%= f.submit "編集", class: "btn btn-primary mb-2 btn-sm-2"%>
       </div>
     <% end %>
-
-  </div><!--タグ・メニューに含めるために-->
-  <div class="tab-pane" id="HowToEntry"><!--タグ・メニューに含めるために-->
 
     <h3>エントリーの仕方</h3>
     <!-- エントリを入力するための入力フォーム -->
@@ -87,19 +59,14 @@
       <div class="form-horizontal">
         <%= f.text_field :entry, class: "form-control mb-2 mr-sm-2" , placeholder: "エントリーの仕方"%>
         <%= f.hidden_field :board_id %>
-        <%= f.submit "投稿", class: "btn btn-primary mb-2 btn-lg" %>
+        <%= f.submit "投稿", class: "btn btn-primary mb-2 btn-sm-2" %>
       </div>
     <% end %>
-
-  </div><!--タグ・メニューに含めるために-->
-</div><!--タグ・メニューに含めるために-->
-
 
       <p>
         <%= link_to "表示ページに戻る", boards_show2_path(@board.id) %>
       </p>
     </div>
-
   </div><!--Bootstrapのグリッドシステムの対象範囲-->
   </body>
 </html>

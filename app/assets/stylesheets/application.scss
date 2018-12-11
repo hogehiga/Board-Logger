@@ -41,9 +41,9 @@ body{
       margin: 0;
       padding: 0;
   }
-  .form-control {//テキストエリアのcss を設定
-    margin-bottom: 10px;
-  }
+  // .form-control {//テキストエリアのcss を設定
+  //   margin-bottom: 10px;
+  // }
 }
 
 // スマホ用に
@@ -83,7 +83,7 @@ body{
 
   .form-control {//テキストエリアのcss を設定
     font-size:40px;
-    margin-bottom: 5px;
+    // margin-bottom: 5px;
   }
   .btn{
     font-size:40px;//ボタンの中の文字の大きさを変更

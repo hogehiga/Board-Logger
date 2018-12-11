@@ -20,35 +20,32 @@
 
         <div class = "showPC"><!--PCの画面とスマホの画面を分けたいから-->
         <h1> <%= @user.name %> さんのページ </h1>
-        <% if @user == current_user %>
-          <h1>サーフポイントの作成</h1>
-        <% end %>
         </div>
 
 
         <% if @user == current_user %>
           <%= form_for(@newBoard, :url => {:action => 'create'}) do |f| %>
             <div class="form-inline">
-              <%= f.text_field :location, class: "form-control mb-2 mr-sm-2 input-lg" %>
+              <%= f.label "サーフポイントの作成", class:"sr-only" %>
+              <%= f.text_field :location, class: "form-control mb-2 mr-sm-2", placeholder: "サーフポイントの作成" %>
               <%= f.hidden_field :user_id %>
-              <%= f.submit "サーフポイントの作成", class: "btn btn-primary mb-2 btn-lg" %>
+              <%= f.submit "+", class: "btn btn-primary mb-2" %>
             </div>
           <% end %>
-
         <% end %>
 
 
-        <ul class="list-group" style="max-width: 300px;">
+        <ul class="list-group">
         <!--<ul class="list-group"> -->
           <% @boards.each do |boards| %>
           <li class="list-group-item">
             <% if @user == current_user %>
-              <%= link_to boards.location, boards_show2_path(boards.id), style: "margin-left: 15px" %>
+              <%= link_to boards.location, boards_show2_path(boards.id), class: "btn btn-link", style: "width: 75%;" %>
               <%= form_for(boards, url: boards_search_path, html: {method: "get"}) do %>
                 <%= hidden_field_tag :board_id, boards.id %>
-                <%= submit_tag '共有するユーザの選択へ' %>
+                <%= submit_tag '共有', class: "btn btn-info" %>
+                <%= link_to "削除", board_path(boards.id), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}%>
               <% end %>
-              <%= link_to "削除する", board_path(boards.id), method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%>
             <% else %>
               <% @followers.each do |f| %>
                 <% if f.board_id == boards.id %>

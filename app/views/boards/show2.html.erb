@@ -8,20 +8,10 @@
     <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
     <div class="box11">
       <p>
-        <%= link_to "波情報を入力する",boards_input_path(@board.id) %>
+        <%= link_to "波情報を入力する",boards_input_path(@board.id), class: "btn btn-info" %>
       </p>
-      <h1 style="margin-left: 20px;"><%= @board.location %></h1>
+      <h1><%= @board.location %></h1>
 
-
-      <!-- タブ・メニュー --><!--波情報，サーフポイントの雰囲気，エントリーの仕方 をタブ(bootstrap)でまとめる-->
-      <ul class="nav nav-tabs">
-        <li><a href="#WaveInfo" data-toggle="tab">波情報</a></li>
-        <li><a href="#atmosphere" data-toggle="tab">サーフポイントの雰囲気</a></li>
-        <li><a href="#HowToEntry" data-toggle="tab">エントリーの仕方</a></li>
-      </ul>
-
-      <div class="tab-content"> <!--タグ・メニューに含めるために-->
-        <div class="tab-pane" id="WaveInfo"><!--タグ・メニューに含めるために-->
           <h3>波情報</h3>
           <!-- 波情報を出力するためのテーブル -->
             <table class="table table-bordered">
@@ -55,9 +45,6 @@
               <% end %>
             </table>
 
-        </div><!--タグ・メニューに含めるために-->
-        <div class="tab-pane" id="atmosphere"><!--タグ・メニューに含めるために-->
-
 
           <h3>サーフポイントの雰囲気</h3>
             <!-- サーフポイントの雰囲気を出力するためのテーブル -->
@@ -68,10 +55,6 @@
                 </tr>
             <% end %>
             </table>
-
-
-        </div><!--タグ・メニューに含めるために-->
-        <div class="tab-pane" id="HowToEntry"><!--タグ・メニューに含めるために-->
 
           <h3>エントリーの仕方</h3>
           <!-- エントリを出力するためのテーブル -->
@@ -92,11 +75,6 @@
               </tr>
             <% end %>
           </table>
-
-        </div><!--タグ・メニューに含めるために-->
-      </div><!--タグ・メニューに含めるために-->
-
-
 
       <p>
         <%= link_to "戻る", root_path %>
