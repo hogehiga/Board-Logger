@@ -28,7 +28,7 @@
           <%= form_for(@newBoard, :url => {:action => 'create'}) do |f| %>
             <div class="form-inline">
               <%= f.label "サーフポイントの作成", class:"sr-only" %>
-              <%= f.text_field :location, class: "form-control mb-2 mr-sm-2", placeholder: "サーフポイントの作成" %>
+              <%= f.text_field :location, class: "form-control mb-2 mr-sm-2", style: "width: 80%; font-size: 30px;", placeholder: "サーフポイントの作成" %>
               <%= f.hidden_field :user_id %>
               <%= f.submit "+", class: "btn btn-primary mb-2" %>
             </div>
@@ -41,7 +41,7 @@
           <% @boards.each do |boards| %>
           <li class="list-group-item">
             <% if @user == current_user %>
-              <%= link_to boards.location, boards_show2_path(boards.id), class: "btn btn-link", style: "width: 75%;" %>
+              <%= link_to boards.location, boards_show2_path(boards.id), class: "btn btn-link", style: "width: 80%;" %>
               <%= form_for(boards, url: boards_search_path, html: {method: "get"}) do %>
                 <%= hidden_field_tag :board_id, boards.id %>
                 <%= submit_tag '共有', class: "btn btn-info" %>
@@ -59,11 +59,11 @@
         </ul>
 
         <% if @user == current_user and Middle.find_by(user_id: current_user.id) %>
-          <h1 style="padding-left: 100px">共有されているボード</h1>
+          <h1>共有されているボード</h1>
             <ul class="list-group" style="max-width: 300px;">
               <% @middle.each do |middle| %>
                 <li class="list-group-item">
-                  <%= link_to middle.board.location, boards_show2_path(middle.board.id) %>
+                  <%= link_to middle.board.location, boards_show2_path(middle.board.id), class: "btn btn-link", style: "width: 80%;" %>
                 </li>
               <% end %>
             </ul>

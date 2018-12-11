@@ -41,12 +41,15 @@
             position: absolute;
             top: 50%;
             bottom: 70%;
+            right: 0%;
+            left: 0%;
 
             h1{
                 font-size:90px;
                 color: #F5F5F5;
                 position: relative;//application.scssが悪さしてるから
                 top: 0px;//application.scssが悪さしてるから
+                text-align: center;
             }
             h2{
                 color: #F5F5F5;
@@ -57,7 +60,7 @@
     }
     //SignUpボタンを調整
    .btn#SignUp{
-        font-size:70px;//ボタンの中の文字の大きさを変更
+        font-size:60px;//ボタンの中の文字の大きさを変更
         position: fixed;
         top:78%;
         bottom: 12%;
@@ -66,43 +69,17 @@
     }
     //HowtoUseボタンを調整
     .btn#HowToUse{
-        font-size:70px;//ボタンの中の文字の大きさを変更
+        font-size:60px;//ボタンの中の文字の大きさを変更
         position: fixed;
         top: 89%;
         bottom: 1%;
         left: 25%;
         right: 25%;
     }
-/*//説明を載せる時
-    //下矢印の位置を設定
-    .glyphicon{
-        font-size:5vh;//画面のたての長さの5%
-        text-align:center; 
-        color:white;
-    }
-    #arrow_bottom1{
-        position: fixed;
-        top:91%; 
-        bottom:95%;
-        left:25%;
-        right:25%;
-    }
-    #arrow_bottom2{
-        position: fixed;
-        top:95%; 
-        bottom:100%;
-        left:25%;
-        right:25%;
-    }
-    .Explain_arrow_bottom{
-        position: fixed;
-        top:91%;
-        bottom:98%;
-        left:60%;
-        right:100%;
 
-        color:white;
+    .form-control {//テキストエリアのcss を設定
+      font-size:40px;
+      margin-bottom: 5px;
     }
-*/
 
 }
