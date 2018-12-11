@@ -4,7 +4,6 @@ class BoardsController < ApplicationController
 
   def index
     @user = User.find(params[:id])
-    @users = @user.followers
     @boards = Board.where(user_id: params[:id])
     @middle = Middle.where(user_id: current_user.id)
     @newBoard = Board.new(user_id: params[:id])
@@ -14,20 +13,8 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @user = @board.user
     @wave = Wave.where(board_id: params[:id])
-
     @manner = Manner.where(board_id: params[:id])
-
     @mood = Mood.where(board_id: params[:id]).last
-
-    @map = Map.where(board_id: params[:id])
-
-    @photo = Photo.all
-    @newMap = Map.new(:board_id => params[:id])
-    @hash = Gmaps4rails.build_markers(@map) do |place, marker|
-      marker.lat place.latitude
-      marker.lng place.longitude
-      marker.infowindow place.address
-    end
   end
 
   def input
@@ -36,14 +23,6 @@ class BoardsController < ApplicationController
     @newWave = Wave.new(:board_id => params[:id])
     @newManner = Manner.new(:board_id => params[:id])
     @newMood = Mood.new(:board_id =>params[:id])
-    @map = Map.where(board_id: params[:id])
-    @newMap = Map.new(:board_id => params[:id])
-
-    @hash = Gmaps4rails.build_markers(@map) do |place, marker|
-      marker.lat place.latitude
-      marker.lng place.longitude
-      marker.infowindow place.address
-    end
   end
 
   def show
@@ -57,17 +36,6 @@ class BoardsController < ApplicationController
 
     @mood = Mood.where(board_id: params[:id]).last
     @newMood = Mood.new(:board_id =>params[:id])
-
-    @map = Map.where(board_id: params[:id])
-    @newMap = Map.new(:board_id => params[:id])
-
-    @photo = Photo.all
-
-    @hash = Gmaps4rails.build_markers(@map) do |place, marker|
-      marker.lat place.latitude
-      marker.lng place.longitude
-      marker.infowindow place.address
-    end
   end
 
   def search
@@ -77,16 +45,14 @@ class BoardsController < ApplicationController
     @board_id = params[:board_id]
     @boards = Board.where(user_id: params[:id])
     @middle = Middle.new
-
   end
 
   def create
-    @board = Board.new(params[:board].permit(:location, :user_id))
+    @board = Board.new(board_params)
     if @board.save
-      redirect_to board_path(@board.user_id)
+      redirect_to board_path
     else
-      p @board.errors.full_messages
-      redirect_to board_path(@board.user_id)
+      redirect_to board_path
     end
   end
 
@@ -97,7 +63,7 @@ class BoardsController < ApplicationController
     @board.destroy
     flash[:success] = "Board deleted"
 
-    redirect_to board_path(@board.user_id)
+    redirect_to board_path
   end
 
 
@@ -113,7 +79,14 @@ class BoardsController < ApplicationController
   # ログインしているユーザーのボードかどうか確認
   def correct_board
     @board = Board.find(params[:id])
-    redirect_to(board_path(current_user.id)) unless current_board?(@board) || accessboard(current_user)
+    unless current_board?(@board) || accessboard(current_user)
+      render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
+    end
   end
 
+  private
+
+  def board_params
+    params[:board].permit(:location, :user_id)
+  end
 end

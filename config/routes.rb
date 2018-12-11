@@ -17,6 +17,5 @@ Rails.application.routes.draw do
   resources :manners, only: [:create, :destroy]
   resources :middles, only: [:create, :destroy]
   resources :moods, only: [:create, :destroy]
-  resources :photos, only: [:create, :destroy]
   resources :waves, only: [:create, :destroy]
 end
