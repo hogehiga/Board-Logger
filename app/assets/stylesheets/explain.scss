@@ -12,18 +12,83 @@
 @media screen and (max-device-width:767px) {
     //　画面サイズが767px以下の場合読み込む
 
-    .BoardLogger{
+    .NAMI_LOG{
+        margin-top:0%;
+        padding-bottom:1vh;
+        background-color: rgb(130, 207, 233);
         h1{
             font-size:13vw; //vw 画面の横のサイズに合わせて文字のサイズを変更
+            margin-top:1vh;
+            margin-bottom:1vh;
         }
         h2{
             font-size:5vw;
+            margin-top:0px;
         }
-        background-color: lightblue;
     }
 
-    //説明1について
-    .explain_1{
+    .Value_NAMILOG{
+        h1{
+            font-size: 8vw;
+        }
+        h2{
+            font-size: 6vw;
+        }
+        h3{
+            font-size: 4vw;
+            text-indent:1em;
+        }
+    }
+
+    //下矢印の設定
+    #arrow_bottom1{
+        font-size:5vh;//画面のたての長さの5%
+        text-align:center; 
+        color:white;
+
+        //中央に配置する
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom:0vh;
+        padding-bottom:0vh;
+
+        position: relative;
+        top:2vh;
+    }
+    //下矢印の設定
+    #arrow_bottom2{
+        font-size:5vh;//画面のたての長さの5%
+        text-align:center; 
+        color:white;
+
+        //中央に配置する
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top:0vh;
+        padding-top:0vh;
+    }
+    //下矢印の説明の設定
+    .Explain_arrow_bottom{
+        h3{
+            margin-top:0px;
+            margin-bottom:0px;
+            font-size:4vh;
+            color:white;
+            display: inline-block;
+            
+            position: relative;
+            top: -7vh;
+            left: 55vw;
+        }
+    }
+
+
+
+    //使い方の説明
+    //説明について
+    .explain{
         //画像を調整
         img{
             width:80vw;//画面の横サイズの80%に合わせる
@@ -31,18 +96,7 @@
         }
         //説明文を調整
         h3{
-            font-size:4vw;
-        }
-    }
-
-    //説明2について　
-    .explain_2{
-        img{
-            width:80vw;//画面の横サイズの80%に合わせる
-            height:auto;
-        }
-        h3{
-            font-size:4vw;
+            font-size:6vw;
         }
     }
 
@@ -61,5 +115,6 @@
 
         margin-bottom:4vh;
     }
+
 
 }

@@ -3,21 +3,24 @@
   <div class="container-fluid">  <!-- スマホで表示できるように、container から container-fluidに変更-->
     <nav>
       <ul class="nav navbar-nav navbar-left">
-        <li><%= link_to "Board Logger", root_path, id: "logo" %> </li>
+        <li><%= link_to "NAMI LOG", root_path, id: "logo" %> </li>
       </ul>
         <ul class="nav navbar-nav navbar-right" >
           <% if logged_in? %><!--ログインされていたら表示する-->
-            <li><%= link_to "Point List", root_path %></li> <!--ポイントリストへ行く-->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
+                メニュー <!--<b class="caret"></b>-->
+                <span class="icon-bar"></span>
               </a>
               <ul class="dropdown-menu">
                 <!--<li><%= link_to "Profile", `#` %></li>--> <!--後々、ユーザ情報を見れるようにしたらここ使う-->
                 <!--<li><%= link_to "Settings", '#' %></li> --><!--後々,ユーザによる設定をできるようにするときはここを使う-->
+                <li><%= link_to "ポイントリストへ", root_path %></li> <!--ポイントリストへ行く-->
+                <li class="divider"></li>
+                <li><%= link_to "使い方", explain_explain_path %></li>
                 <li class="divider"></li>
                 <li>
-                  <%= link_to "Log out", logout_path, method: :delete %>
+                  <%= link_to "ログアウト", logout_path, method: :delete %>
                 </li>
               </ul>
             </li>
