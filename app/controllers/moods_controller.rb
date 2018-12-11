@@ -9,7 +9,7 @@ class MoodsController < ApplicationController
   def destroy
     @mood = Mood.find(params[:id])
     @mood.delete
-    redirect_to boards_input_path(params[:mood]['board_id'])
+    redirect_to boards_show2_path(@mood.board_id)
   end
 
   private

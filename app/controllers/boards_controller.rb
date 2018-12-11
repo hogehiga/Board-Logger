@@ -3,10 +3,10 @@ class BoardsController < ApplicationController
   before_action :correct_board,  only: [:show]
 
   def index
-    @user = User.find(params[:id])
-    @boards = Board.where(user_id: params[:id])
+    @user = User.find(current_user.id)
+    @boards = Board.where(user_id: current_user.id)
     @middle = Middle.where(user_id: current_user.id)
-    @newBoard = Board.new(user_id: params[:id])
+    @newBoard = Board.new(user_id: current_user.id)
   end
 
   def show2
