@@ -67,12 +67,15 @@
         <!--横線-->
         <HR align=center SIZE=2 width="100%">
 
-
-        <div class = "Button"><!--ボタンを中央揃えにするために-->
-            <!--SignUpボタン-->
-            <%= link_to "Sign up", new_user_path, class: "btn btn-info " , id:"SignUp" %>
-        </div>
-
+        <% if logged_in?%><!--ログインしていたら表示する-->
+            <%= link_to "ポイントリストに戻る", root_path, class: "btn btn-info " %>
+        <% end %>
+        <% unless logged_in? %><!--ログインされていいなかったら表示する-->
+            <div class = "Button"><!--ボタンを中央揃えにするために-->
+                <!--SignUpボタン-->
+                <%= link_to "Sign up", new_user_path, class: "btn btn-info " , id:"SignUp" %>
+            </div>
+        <% end %>
 
 
     </body>
