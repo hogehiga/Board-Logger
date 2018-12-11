@@ -1,4 +1,4 @@
-class WaveController < ApplicationController
+class WavesController < ApplicationController
   def create
     @wave = Wave.new(wave_prams)
     @wave.save
