@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       log_in user
       remember user
       flash[:success] = "Welcome to the Board Logger!"
-      redirect_to board_path(user.id)
+      redirect_to board_path
     else
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'

@@ -11,10 +11,11 @@
 
     <div class="box11">
 
-      <% if access?(@user) or @user  == current_user %>
+      <% if @user  == current_user %>
 
 
       <!-- Sign in, Log in に成功したらでるメッセージ -->
+
       <p><% flash[:success] %></p>
 
 
@@ -57,7 +58,7 @@
           <% end %>
         </ul>
 
-        <% if @user == current_user and Middle.find_by(user_id: params[:id]) %>
+        <% if @user == current_user and Middle.find_by(user_id: current_user.id) %>
           <h1 style="padding-left: 100px">共有されているボード</h1>
             <ul class="list-group" style="max-width: 300px;">
               <% @middle.each do |middle| %>

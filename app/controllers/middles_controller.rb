@@ -4,7 +4,7 @@ class MiddlesController < ApplicationController
     if board
       @middle = Middle.new(board_id: board.id, user_id: params[:user_id])
       @middle.save!
-      redirect_to root_path
+      redirect_to board_path
     else
       render file: Rails.root.join('public/404.html'), status: 404, layout: false, content_type: 'text/html'
     end
@@ -13,7 +13,7 @@ class MiddlesController < ApplicationController
   def destroy
     @middle = Middle.find(params[:id])
     @middle.delete
-    redirect_to root_path
+    redirect_to board_path
   end
 
   private

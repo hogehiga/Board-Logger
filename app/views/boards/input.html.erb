@@ -11,7 +11,7 @@
     <h1 style="margin-left: 20px;"><%= @board.location %></h1>
 
     <!-- 波情報を入力するための入力フォーム -->
-    <%= form_for @newWave, :url => wave_create_path do |f| %>
+    <%= form_for @newWave do |f| %>
       <div class="form-group">
         <%= f.label "サイズ" %>
         <%= f.select:status, {""=>"", "腰"=>"腰", "腹"=>"腹", "胸"=>"胸", "頭"=>"頭", "頭オーバー"=>"頭オーバー"}, {}, {:class => "form-control"} %>
@@ -45,7 +45,7 @@
 
     <h3>サーフポイントの雰囲気</h3>
     <!-- サーフポイントの雰囲気を入力するための入力フォーム -->
-    <%= form_for @newMood, :url => mood_create_path do |f| %>
+    <%= form_for @newMood do |f| %>
       <div class="form-horizontal">
         <%= f.text_field :mood, class: "form-control mb-2 mr-sm-2" , placeholder: "サーフポイント雰囲気" %>
         <%= f.hidden_field :board_id %>
