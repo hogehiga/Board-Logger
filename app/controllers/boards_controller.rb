@@ -59,7 +59,7 @@ class BoardsController < ApplicationController
 
 # ボード削除用変数設定
   def destroy
-    @board = Board.find(params[:id])
+    @board = Board.find(params[:format])
     @board.destroy
     flash[:success] = "Board deleted"
 

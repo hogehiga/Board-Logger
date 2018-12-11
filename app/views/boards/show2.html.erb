@@ -5,81 +5,11 @@
   </head>
 
   <body>
-    <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
-    <div class="box11">
-      <p>
-        <%= link_to "波情報を入力する",boards_input_path(@board.id), class: "btn btn-info" %>
-      </p>
-      <h1><%= @board.location %></h1>
+    <% if @user == current_user %>
+      <%= render 'shared/can_edit_board' %>
+    <% else %>
+      <%= render 'shared/cannot_edit_board' %>
+    <% end %>
 
-          <h3>波情報</h3>
-          <!-- 波情報を出力するためのテーブル -->
-            <table class="table table-bordered">
-              <tr>
-                <th>日付</th>
-                <th>サイズ</th>
-                <th>風向き</th>
-                <th>何ショア</th>
-                <th>風速</th>
-                <th>ウネリのサイズ</th>
-                <th>ウネリの向き</th>
-                <th>ブレイクの種類</th>
-                <!--<td>コメント</td> -->
-              </tr>
-
-
-              <% @wave.each do |wave| %>
-                <tr>
-                  <td rowspan="2"><%= wave.created_at %> </td>
-                  <td><%= wave.status %></td>
-                  <td><%= wave.windway %></td>
-                  <td><%= wave.shore %></td>
-                  <td><%= wave.windpower %></td>
-                  <td><%= wave.swell %></td>
-                  <td><%= wave.swellway %></td>
-                  <td><%= wave.bottom %></td>
-                </tr>
-                <tr>
-                  <td colspan="7"><%= wave.comment %></td>
-                </tr>
-                <tr>
-                  <%= link_to "削除する", wave, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%>
-                </tr>
-              <% end %>
-            </table>
-
-
-          <h3>サーフポイントの雰囲気</h3>
-            <!-- サーフポイントの雰囲気を出力するためのテーブル -->
-            <table class="table table-bordered">
-            <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
-                <tr>
-                  <td><%= @mood.mood%></td>
-                </tr>
-                <tr>
-                  <td><%= link_to "削除する", @mood, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></td>
-                </tr>
-            <% end %>
-            </table>
-
-          <h3>エントリーの仕方</h3>
-          <!-- エントリを出力するためのテーブル -->
-          <table class="table table-bordered">
-            <% @manner.each do |manner| %>
-              <tr>
-                <td><%= manner.entry %></td>
-              </tr>
-              <tr>
-                <td><%= link_to "削除する", manner, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></td>
-              </tr>
-            <% end %>
-          </table>
-
-      <p>
-        <%= link_to "戻る", board_path %>
-      </p>
-    </div>
-
-  </div><!--Bootstrapのグリッドシステムの対象範囲-->
   </body>
 </html>
