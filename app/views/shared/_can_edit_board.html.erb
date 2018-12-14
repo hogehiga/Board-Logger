@@ -23,7 +23,7 @@
 
       <% @wave.each do |wave| %>
         <tr>
-          <td rowspan="2"><%= wave.created_at %> </td>
+          <td rowspan="2"><%= wave.created_at.strftime("%Y年%-m月%-d日") %> </td>
           <td><%= wave.status %></td>
           <td><%= wave.windway %></td>
           <td><%= wave.shore %></td>
