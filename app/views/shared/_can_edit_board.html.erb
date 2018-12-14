@@ -1,11 +1,8 @@
 <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
   <div class="box11">
-    <p>
-      <%= link_to "波情報を入力する",boards_input_path(@board.id), class: "btn btn-info" %>
-    </p>
     <h1><%= @board.location %></h1>
 
-    <h3>波情報</h3>
+    <h3>波情報<%= link_to "入力",boards_input_path(@board.id), class: "btn btn-info" %></h3>
     <!-- 波情報を出力するためのテーブル -->
     <table class="table table-bordered">
       <tr>
@@ -42,7 +39,7 @@
     </table>
 
 
-    <h3>サーフポイントの雰囲気</h3>
+    <h3>サーフポイントの雰囲気<%= link_to "入力",boards_input_path(@board.id), class: "btn btn-info" %></h3>
     <!-- サーフポイントの雰囲気を出力するためのテーブル -->
     <table class="table table-bordered">
       <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
@@ -55,14 +52,12 @@
       <% end %>
     </table>
 
-    <h3>エントリーの仕方</h3>
+    <h3>エントリーの仕方<%= link_to "入力",boards_input_path(@board.id), class: "btn btn-info" %></h3>
     <!-- エントリを出力するためのテーブル -->
     <table class="table table-bordered">
       <% @manner.each do |manner| %>
         <tr>
           <td><%= manner.entry %></td>
-        </tr>
-        <tr>
           <td><%= link_to "削除する", manner, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></td>
         </tr>
       <% end %>
