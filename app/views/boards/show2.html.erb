@@ -1,15 +1,22 @@
 <html>
   <head>
     <title><%= @board.location %>のサーフポイント</title>
+    <!-- current_userだけの機能 ↓ 地図画面にピンをうつまでがカレントユーザの仕事 実装済み -->
+
     <%= stylesheet_link_tag "boards", :media => "all" %>
   </head>
 
   <body>
+
     <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
     <div class="box11">
       <p>
         <%= link_to "波情報を入力する",boards_input_path(@board.id), class: "btn btn-info" %>
       </p>
+      <% if @user == current_user %>
+        <p><button onclick="geoFindMe()">Show my location</button></p>
+        <div id="out"></div>
+      <% end %>
       <h1><%= @board.location %></h1>
 
           <h3>波情報</h3>

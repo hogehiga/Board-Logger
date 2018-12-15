@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'positions/create'
+  post 'positions/create'
   get 'positions/show'
   root 'home#index'
 

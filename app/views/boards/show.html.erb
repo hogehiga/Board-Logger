@@ -22,13 +22,8 @@
           handler.fitMapToBounds();
         });
       </script>
-
-      <!-- current_userだけの機能 ↓ 地図画面にピンをうつまでがカレントユーザの仕事 実装済み -->
-      <% if @user == current_user %>
-        <p><button onclick="geoFindMe()">Show my location</button></p>
-        <div id="out"></div>
-      <% end %>
-
+      <p><button onclick="geoFindMe()">Show my location</button></p>
+      <div id="out"></div>
       <% if @user == current_user %>
         <%= render 'shared/can_edit_board' %>
       <% else %>

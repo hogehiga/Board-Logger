@@ -11,7 +11,10 @@ function geoFindMe() {
     var longitude = position.coords.longitude;
 
     //ここで呼び出したい。
-    //$.ajax(url: 'positions/create', type: "POST", data:{latitude: latitude, longitude: longitude});
+
+    //$.ajax(url: 'positions/create', type: "POST", data:{latitude,longitude});
+    //$.post("/positions/create", {data:1.6,authenticity_token: getCSRFtoken()})
+    $.post("/positions/create", {data:latitude,longitude})
 
     output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
 
@@ -21,7 +24,7 @@ function geoFindMe() {
   function error() {
     output.innerHTML = "Unable to retrieve your location";
   }
-
+debugger;
   output.innerHTML = "<p>Locating…</p>";
 
   navigator.geolocation.getCurrentPosition(success, error);
