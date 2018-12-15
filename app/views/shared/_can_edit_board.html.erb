@@ -2,7 +2,7 @@
   <div class="box11">
     <h1><%= @board.location %></h1>
 
-    <h3>波情報<%= link_to "入力",boards_input_path(@board.id), class: "btn btn-info" %></h3>
+    <h3>波情報<%= link_to "入力", wave_form_path(@board.id), class: "btn btn-info" %></h3>
     <!-- 波情報を出力するためのテーブル -->
     <table class="table table-bordered">
       <tr>
@@ -39,7 +39,7 @@
     </table>
 
 
-    <h3>サーフポイントの雰囲気<%= link_to "入力",boards_input_path(@board.id), class: "btn btn-info" %></h3>
+    <h3>サーフポイントの雰囲気<%= link_to "入力", mood_form_path(@board.id), class: "btn btn-info" %></h3>
     <!-- サーフポイントの雰囲気を出力するためのテーブル -->
     <table class="table table-bordered">
       <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
@@ -52,7 +52,7 @@
       <% end %>
     </table>
 
-    <h3>エントリーの仕方<%= link_to "入力",boards_input_path(@board.id), class: "btn btn-info" %></h3>
+    <h3>エントリーの仕方<%= link_to "入力", entry_form_path(@board.id), class: "btn btn-info" %></h3>
     <!-- エントリを出力するためのテーブル -->
     <table class="table table-bordered">
       <% @manner.each do |manner| %>

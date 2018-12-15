@@ -17,12 +17,27 @@ class BoardsController < ApplicationController
     @mood = Mood.where(board_id: params[:id]).last
   end
 
-  def input
+  # def input
+  #   @board = Board.find(params[:id])
+  #   @user = @board.user
+  #   @newWave = Wave.new(:board_id => params[:id])
+  #   @newManner = Manner.new(:board_id => params[:id])
+  #   @newMood = Mood.new(:board_id =>params[:id])
+  # end
+
+  def wave_form
     @board = Board.find(params[:id])
-    @user = @board.user
     @newWave = Wave.new(:board_id => params[:id])
-    @newManner = Manner.new(:board_id => params[:id])
+  end
+
+  def mood_form
+    @board = Board.find(params[:id])
     @newMood = Mood.new(:board_id =>params[:id])
+  end
+
+  def entry_form
+    @board = Board.find(params[:id])
+    @newManner = Manner.new(:board_id => params[:id])
   end
 
   def show

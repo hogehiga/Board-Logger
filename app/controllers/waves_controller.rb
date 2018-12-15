@@ -3,7 +3,7 @@ class WavesController < ApplicationController
   def create
     @wave = Wave.new(wave_prams)
     @wave.save
-    redirect_to boards_input_path(params[:wave]['board_id'])
+    redirect_to boards_show2_path(params[:wave]['board_id'])
   end
 
   def destroy
