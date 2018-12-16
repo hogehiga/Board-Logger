@@ -29,7 +29,11 @@
               <%= f.label "サーフポイントの作成", class:"sr-only" %>
               <%= f.text_field :location, class: "form-control mb-2 mr-sm-2", placeholder: "サーフポイントの作成" %>
               <%= f.hidden_field :user_id %>
-              <%= f.submit "+", class: "btn btn-primary mb-2" %>
+              <%= f.submit "+", class: "btn btn-primary mb-2" %> 
+              <%= javascript_tag do %>
+                window.user_name = '<%= j @user.name %>';
+                alert(user_name);
+              <% end %>
             </div>
           <% end %>
         <% end %>
