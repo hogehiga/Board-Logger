@@ -1,5 +1,6 @@
 function geoFindMe() {
   var output = document.getElementById("out");
+  alert("呼び出されている");
 
   if (!navigator.geolocation){
     output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
