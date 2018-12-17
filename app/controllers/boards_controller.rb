@@ -12,7 +12,7 @@ class BoardsController < ApplicationController
   def show2
     @board = Board.find(params[:id])
     @user = @board.user
-    @wave = Wave.where(board_id: params[:id])
+    @wave = Wave.where(board_id: params[:id]).page(params[:page]).per(2)
     @manner = Manner.where(board_id: params[:id])
     @mood = Mood.where(board_id: params[:id]).last
   end
@@ -43,7 +43,7 @@ class BoardsController < ApplicationController
   def show
     @board = Board.find(params[:id])
     @user = @board.user
-    @wave = Wave.where(board_id: params[:id])
+    @wave = Wave.where(board_id: params[:id]).page(params[:page]).per(PER)
     @newWave = Wave.new(:board_id => params[:id])
 
     @manner = Manner.where(board_id: params[:id])

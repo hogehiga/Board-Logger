@@ -43,6 +43,7 @@
         </tbody>
       </table>
     <% end %>
+    <%= paginate @wave %>
 
 
       <h3>サーフポイントの雰囲気<%= link_to "入力", mood_form_path(@board.id), class: "btn btn-info" %></h3>
