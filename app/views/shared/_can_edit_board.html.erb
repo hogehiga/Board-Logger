@@ -6,7 +6,7 @@
     <!-- 波情報を出力するためのテーブル -->
     <% @wave.each do |wave| %>
       <table class="table table-striped">
-        <caption align="left"><h4><%= wave.created_at.strftime("%Y年%-m月%-d日") %><%= link_to "削除", wave, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></h4></caption>
+        <caption align="left"><h3><%= wave.created_at.strftime("%Y年%-m月%-d日") %><%= link_to "削除", wave, method: :delete, class: "btn btn-danger mb-2 btn-sm", style: "margin-left: 20px;", data: {confirm: "本当に削除しますか？"}%></h3></caption>
         <tbody>
           <tr>
             <th>サイズ</th>
@@ -48,7 +48,7 @@
 
       <h3>サーフポイントの雰囲気<%= link_to "入力", mood_form_path(@board.id), class: "btn btn-info" %></h3>
       <!-- サーフポイントの雰囲気を出力するためのテーブル -->
-      <table class="table">
+      <table class="table table-striped">
         <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
           <tr>
             <td><%= @mood.mood%></td>
@@ -59,7 +59,7 @@
 
     <h3>エントリーの仕方<%= link_to "入力", entry_form_path(@board.id), class: "btn btn-info" %></h3>
     <!-- エントリを出力するためのテーブル -->
-    <table class="table">
+    <table class="table table-striped">
       <% @manner.each do |manner| %>
         <tr>
           <td><%= manner.entry %></td>
