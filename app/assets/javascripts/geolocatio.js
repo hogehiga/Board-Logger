@@ -15,7 +15,7 @@ function geoFindMe() {
 
     //$.ajax(url: 'positions/create', type: "POST", data:{latitude,longitude});
     //$.post("/positions/create", {data:1.6,authenticity_token: getCSRFtoken()})
-    $.post("/positions/create", {data:latitude,longitude})
+    $.post("/boards/create", {data:latitude,longitude})
 
     output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
 

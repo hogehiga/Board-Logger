@@ -81,7 +81,10 @@ class BoardsController < ApplicationController
   end
 
   def create
-    @board = Board.new(params[:board].permit(:location, :user_id))
+    @latitude = params[:data]
+    @longitude = params[:Longitude]
+    @board = Board.new(params[:board].permit(:location, :user_id), Latitude: @latitude, Leongitude: @longitude)
+    binding.pry
     if @board.save
       redirect_to board_path(@board.user_id)
     else
