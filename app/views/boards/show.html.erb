@@ -6,36 +6,33 @@
 
   <body>
     <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
-    <div class="box11">
+      <div class="box11">
 
-      <h1 style="margin-left: 20px;"><%= @board.location %></h1>
+        <h1 style="margin-left: 20px;"><%= @board.location %></h1>
 
-      <!-- google mapを表示する場所> -->
-      <div id="gmap" style="width: 100%; height: 300px;"></div>
+        <!-- google mapを表示する場所> -->
+        <div id="gmap" style="width: 100%; height: 300px;"></div>
 
-      <!-- google mapを表示するためのJS -->
-      <script>
-        handler = Gmaps.build('Google');
-        handler.buildMap({ provider: {}, internal: {id: 'gmap'}}, function(){
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-        });
-      </script>
-      <p><button onclick="geoFindMe()">Show my location</button></p>
-      <div id="out"></div>
-      <% if @user == current_user %>
-        <%= render 'shared/can_edit_board' %>
-      <% else %>
-        <%= render 'shared/cannot_edit_board' %>
-      <% end %>
-
-
-      <p>
-        <%= link_to "戻る", root_path %>
-      </p>
-    </div>
-
-  </div><!--Bootstrapのグリッドシステムの対象範囲-->
+        <!-- google mapを表示するためのJS -->
+        <script>
+          handler = Gmaps.build('Google');
+          handler.buildMap({ provider: {}, internal: {id: 'gmap'}}, function(){
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+          });
+        </script>
+        <p><button onclick="geoFindMe()">Show my location</button></p>
+        <div id="out"></div>
+        <% if @user == current_user %>
+          <%= render 'shared/can_edit_board' %>
+        <% else %>
+          <%= render 'shared/cannot_edit_board' %>
+        <% end %>
+        <p>
+          <%= link_to "戻る", root_path %>
+        </p>
+      </div>
+    </div><!--Bootstrapのグリッドシステムの対象範囲-->
   </body>
 </html>
