@@ -17,14 +17,6 @@ class BoardsController < ApplicationController
     @mood = Mood.where(board_id: params[:id]).last
   end
 
-  # def input
-  #   @board = Board.find(params[:id])
-  #   @user = @board.user
-  #   @newWave = Wave.new(:board_id => params[:id])
-  #   @newManner = Manner.new(:board_id => params[:id])
-  #   @newMood = Mood.new(:board_id =>params[:id])
-  # end
-
   def wave_form
     @board = Board.find(params[:id])
     @newWave = Wave.new(:board_id => params[:id])
@@ -38,19 +30,6 @@ class BoardsController < ApplicationController
   def entry_form
     @board = Board.find(params[:id])
     @newManner = Manner.new(:board_id => params[:id])
-  end
-
-  def show
-    @board = Board.find(params[:id])
-    @user = @board.user
-    @wave = Wave.where(board_id: params[:id]).page(params[:page]).per(PER)
-    @newWave = Wave.new(:board_id => params[:id])
-
-    @manner = Manner.where(board_id: params[:id])
-    @newManner = Manner.new(:board_id => params[:id])
-
-    @mood = Mood.where(board_id: params[:id]).last
-    @newMood = Mood.new(:board_id =>params[:id])
   end
 
   def search
@@ -71,7 +50,6 @@ class BoardsController < ApplicationController
     end
   end
 
-
 # ボード削除用変数設定
   def destroy
     @board = Board.find(params[:format])
@@ -80,7 +58,6 @@ class BoardsController < ApplicationController
 
     redirect_to board_path
   end
-
 
   # beforeアクション
   # ログイン済みユーザーかどうか確認
