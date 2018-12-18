@@ -1,7 +1,5 @@
-function geoFindMe() {
+window.onload = function geoFindMe() {
   var output = document.getElementById("out");
-  alert("呼び出されている");
-
   if (!navigator.geolocation){
     output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
     return;
@@ -10,12 +8,14 @@ function geoFindMe() {
   function success(position) {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
+    document.getElementById("latitude").value = position.coords.latitude;
+    document.getElementById("longitude").value = position.coords.longitude;
 
     //ここで呼び出したい。
 
     //$.ajax(url: 'positions/create', type: "POST", data:{latitude,longitude});
     //$.post("/positions/create", {data:1.6,authenticity_token: getCSRFtoken()})
-    $.post("/boards/create", {data:latitude,longitude})
+    //$.post("/boards/create",  {data:latitude,longitude,authenticity_token: getCSRFtoken()})
 
     output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
 

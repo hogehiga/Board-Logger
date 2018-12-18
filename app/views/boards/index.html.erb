@@ -29,20 +29,11 @@
               <%= f.label "サーフポイントの作成", class:"sr-only" %>
               <%= f.text_field :location, class: "form-control mb-2 mr-sm-2", placeholder: "サーフポイントの作成" %>
               <%= f.hidden_field :user_id %>
-              <!--<%= f.submit "+", class: "btn btn-primary mb-2" %> -->
-              <input type="button" value="+" class="btn btn-primary mb-2" onClick="geoFindMe()" >
+              <%= f.hidden_field :latitude, id:"latitude" %>
+              <%= f.hidden_field :longitude, id:"longitude" %>
+              <%= f.submit "+", class: "btn btn-primary mb-2" %>
+              <!-- <input type="submit" value="+" class="btn btn-primary mb-2" onClick="geoFindMe()" > -->
               <div id="out"></div>
-              <!--javascriptを実行する-->
-              <!--
-              <%= javascript_tag do %>
-                window.user_name = '<%= j @user.name%>';
-                window.Board = '<%= j @board%>';
-                alert(user_name);
-                console.log("username= "+user_name);
-                console.log("Board= "+ Board)
-                geoFindMe();
-              <% end %>
-              -->
             </div>
           <% end %>
         <% end %>

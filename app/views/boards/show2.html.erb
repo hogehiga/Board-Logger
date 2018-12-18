@@ -15,10 +15,7 @@
       </p>
       <% if @user == current_user %>
         <!--<%=link_to "my location",onClick: "geoFindMe();"%>-->
-      javascript_tag "alert('All is good')"
-        <!--
-        <p><button onclick="geoFindMe()">Show my location</button></p>
-        -->
+      
         <div id="out"></div>
       <% end %>
       <h1><%= @board.location %></h1>

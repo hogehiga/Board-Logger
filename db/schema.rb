@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2018_12_17_054646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.float "Latitude"
-    t.float "Longitude"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "manners", force: :cascade do |t|
@@ -60,13 +60,6 @@ ActiveRecord::Schema.define(version: 2018_12_17_054646) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["manner_id"], name: "index_photos_on_manner_id"
-  end
-
-  create_table "positions", force: :cascade do |t|
-    t.float "latitude"
-    t.float "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
