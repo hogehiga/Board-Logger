@@ -1,69 +1,68 @@
 <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
   <div class="box11">
-    <p>
-      <%= link_to "波情報を入力する",boards_input_path(@board.id), class: "btn btn-info" %>
-    </p>
     <h1><%= @board.location %></h1>
 
-    <h3>波情報</h3>
+    <h3>波情報<%= link_to "入力", wave_form_path(@board.id), class: "btn btn-info" %></h3>
     <!-- 波情報を出力するためのテーブル -->
-    <table class="table table-bordered">
-      <tr>
-        <th>日付</th>
-        <th>サイズ</th>
-        <th>風向き</th>
-        <th>何ショア</th>
-        <th>風速</th>
-        <th>ウネリのサイズ</th>
-        <th>ウネリの向き</th>
-        <th>ブレイクの種類</th>
-        <!--<td>コメント</td> -->
-      </tr>
+    <% @wave.each do |wave| %>
+      <table class="table table-striped">
+        <caption align="left"><h3><%= wave.created_at.strftime("%Y年%-m月%-d日") %><%= link_to "削除", wave, method: :delete, class: "btn btn-danger mb-2 btn-sm", style: "margin-left: 20px;", data: {confirm: "本当に削除しますか？"}%></h3></caption>
+        <tbody>
+          <tr>
+            <th>サイズ</th>
+            <td><%= wave.status %></td>
+          </tr>
+          <tr>
+            <th>風向き</th>
+            <td><%= wave.windway %></td>
+          </tr>
+          <tr>
+            <th>何ショア</th>
+            <td><%= wave.shore %></td>
+          </tr>
+          <tr>
+            <th>風速</th>
+            <td><%= wave.windpower %></td>
+          </tr>
+          <tr>
+            <th>うねりのサイズ</th>
+            <td><%= wave.swell %></td>
+          </tr>
+          <tr>
+            <th>うねりの向き</th>
+            <td><%= wave.swellway %></td>
+          </tr>
+          <tr>
+            <th>ブレイクの種類</th>
+            <td><%= wave.bottom %></td>
+          </tr>
+          <tr>
+            <th>コメント</th>
+            <td colspan="7"><%= wave.comment %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+    <%= paginate @wave %>
 
-
-      <% @wave.each do |wave| %>
-        <tr>
-          <td rowspan="2"><%= wave.created_at.strftime("%Y年%-m月%-d日") %> </td>
-          <td><%= wave.status %></td>
-          <td><%= wave.windway %></td>
-          <td><%= wave.shore %></td>
-          <td><%= wave.windpower %></td>
-          <td><%= wave.swell %></td>
-          <td><%= wave.swellway %></td>
-          <td><%= wave.bottom %></td>
-        </tr>
-        <tr>
-          <td colspan="7"><%= wave.comment %></td>
-        </tr>
-        <tr>
-          <%= link_to "削除する", wave, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%>
-        </tr>
-      <% end %>
-    </table>
-
-
-    <h3>サーフポイントの雰囲気</h3>
+    <h3>サーフポイントの雰囲気<%= link_to "入力", mood_form_path(@board.id), class: "btn btn-info" %></h3>
     <!-- サーフポイントの雰囲気を出力するためのテーブル -->
-    <table class="table table-bordered">
+    <table class="table table-striped">
       <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
         <tr>
           <td><%= @mood.mood%></td>
-        </tr>
-        <tr>
-          <td><%= link_to "削除する", @mood, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></td>
+          <td align="right" width="20"><%= link_to "削除", @mood, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></td>
         </tr>
       <% end %>
     </table>
 
-    <h3>エントリーの仕方</h3>
+    <h3>エントリーの仕方<%= link_to "入力", entry_form_path(@board.id), class: "btn btn-info" %></h3>
     <!-- エントリを出力するためのテーブル -->
-    <table class="table table-bordered">
+    <table class="table table-striped">
       <% @manner.each do |manner| %>
         <tr>
           <td><%= manner.entry %></td>
-        </tr>
-        <tr>
-          <td><%= link_to "削除する", manner, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></td>
+          <td align="right" width="20"><%= link_to "削除", manner, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></td>
         </tr>
       <% end %>
     </table>

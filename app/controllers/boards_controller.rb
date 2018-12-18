@@ -12,23 +12,38 @@ class BoardsController < ApplicationController
   def show2
     @board = Board.find(params[:id])
     @user = @board.user
-    @wave = Wave.where(board_id: params[:id])
+    @wave = Wave.where(board_id: params[:id]).page(params[:page]).per(2)
     @manner = Manner.where(board_id: params[:id])
     @mood = Mood.where(board_id: params[:id]).last
   end
 
-  def input
+  # def input
+  #   @board = Board.find(params[:id])
+  #   @user = @board.user
+  #   @newWave = Wave.new(:board_id => params[:id])
+  #   @newManner = Manner.new(:board_id => params[:id])
+  #   @newMood = Mood.new(:board_id =>params[:id])
+  # end
+
+  def wave_form
     @board = Board.find(params[:id])
-    @user = @board.user
     @newWave = Wave.new(:board_id => params[:id])
-    @newManner = Manner.new(:board_id => params[:id])
+  end
+
+  def mood_form
+    @board = Board.find(params[:id])
     @newMood = Mood.new(:board_id =>params[:id])
+  end
+
+  def entry_form
+    @board = Board.find(params[:id])
+    @newManner = Manner.new(:board_id => params[:id])
   end
 
   def show
     @board = Board.find(params[:id])
     @user = @board.user
-    @wave = Wave.where(board_id: params[:id])
+    @wave = Wave.where(board_id: params[:id]).page(params[:page]).per(PER)
     @newWave = Wave.new(:board_id => params[:id])
 
     @manner = Manner.where(board_id: params[:id])

@@ -2,7 +2,7 @@ class MannersController < ApplicationController
   def create
     @manner = Manner.new(manner_params)
     @manner.save
-    redirect_to boards_input_path(params[:manner]['board_id'])
+    redirect_to boards_show2_path(params[:manner]['board_id'])
   end
 
   def destroy
