@@ -45,16 +45,15 @@
     <% end %>
     <%= paginate @wave %>
 
-
-      <h3>サーフポイントの雰囲気<%= link_to "入力", mood_form_path(@board.id), class: "btn btn-info" %></h3>
-      <!-- サーフポイントの雰囲気を出力するためのテーブル -->
-      <table class="table table-striped">
-        <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
-          <tr>
-            <td><%= @mood.mood%></td>
-            <td align="right" width="20"><%= link_to "削除", @mood, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></td>
-          </tr>
-        <% end %>
+    <h3>サーフポイントの雰囲気<%= link_to "入力", mood_form_path(@board.id), class: "btn btn-info" %></h3>
+    <!-- サーフポイントの雰囲気を出力するためのテーブル -->
+    <table class="table table-striped">
+      <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
+        <tr>
+          <td><%= @mood.mood%></td>
+          <td align="right" width="20"><%= link_to "削除", @mood, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></td>
+        </tr>
+      <% end %>
     </table>
 
     <h3>エントリーの仕方<%= link_to "入力", entry_form_path(@board.id), class: "btn btn-info" %></h3>
