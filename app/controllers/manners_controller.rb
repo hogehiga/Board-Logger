@@ -5,6 +5,12 @@ class MannersController < ApplicationController
     redirect_to boards_show2_path(params[:manner]['board_id'])
   end
 
+  def destroy
+    @manner = Manner.find(params[:id])
+    @manner.delete
+    redirect_to boards_show2_path(@manner.board_id)
+  end
+
   private
 
   def manner_params

@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
 
-  def show
-  end
-
   def new
     @user = User.new
   end
@@ -12,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the Board Logger!"
-      redirect_to board_path(@user.id)
+      redirect_to board_path
     else
       render 'new'
     end

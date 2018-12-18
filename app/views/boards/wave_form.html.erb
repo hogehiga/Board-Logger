@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title><%= @board.location %>のサーフポイント</title>
+    <title>波情報の入力</title>
     <%= stylesheet_link_tag "boards", :media => "all" %>
   </head>
 
@@ -40,26 +40,6 @@
 
         <%= f.hidden_field :board_id %>
         <%= f.submit "投稿" , class: "btn btn-primary mb-2 btn-sm-2"%>
-      </div>
-    <% end %>
-
-    <h3>サーフポイントの雰囲気</h3>
-    <!-- サーフポイントの雰囲気を入力するための入力フォーム -->
-    <%= form_for @newMood do |f| %>
-      <div class="form-horizontal">
-        <%= f.text_field :mood, class: "form-control mb-2 mr-sm-2" , placeholder: "サーフポイント雰囲気" %>
-        <%= f.hidden_field :board_id %>
-        <%= f.submit "編集", class: "btn btn-primary mb-2 btn-sm-2"%>
-      </div>
-    <% end %>
-
-    <h3>エントリーの仕方</h3>
-    <!-- エントリを入力するための入力フォーム -->
-    <%= form_for @newManner do |f| %>
-      <div class="form-horizontal">
-        <%= f.text_field :entry, class: "form-control mb-2 mr-sm-2" , placeholder: "エントリーの仕方"%>
-        <%= f.hidden_field :board_id %>
-        <%= f.submit "投稿", class: "btn btn-primary mb-2 btn-sm-2" %>
       </div>
     <% end %>
 

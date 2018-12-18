@@ -43,16 +43,17 @@
       }
       //f.labelの文字の大きさ指定
       label{
-          font-size:60px;
-      }
-      //link_to の文字の大きさを指定
-      a{
-          font-size:50px; 
+          font-size:40px;
       }
       //ボタンのところ
       .btn{
-        margin-bottom: 10px
+        margin-bottom: 10px;
+        font-size:40px;
       }
+  }
 
+  .form-control {//テキストエリアのcss を設定
+    font-size:40px;
+    margin-bottom: 5px;
   }
 }
