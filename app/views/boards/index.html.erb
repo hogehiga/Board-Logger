@@ -30,7 +30,11 @@
               <%= f.label "サーフポイントの作成", class:"sr-only" %>
               <%= f.text_field :location, class: "form-control mb-2 mr-sm-2", style: "width: 80%; font-size: 30px;", placeholder: "サーフポイントの作成" %>
               <%= f.hidden_field :user_id %>
+              <%= f.hidden_field :latitude, id:"latitude" %>
+              <%= f.hidden_field :longitude, id:"longitude" %>
               <%= f.submit "+", class: "btn btn-primary mb-2" %>
+              <!-- <input type="submit" value="+" class="btn btn-primary mb-2" onClick="geoFindMe()" > -->
+              <div id="out"></div>
             </div>
           <% end %>
         <% end %>

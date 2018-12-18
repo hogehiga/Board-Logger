@@ -22,7 +22,8 @@
           handler.fitMapToBounds();
         });
       </script>
-
+      <p><button onclick="geoFindMe()">Show my location</button></p>
+      <div id="out"></div>
       <% if @user == current_user %>
         <%= render 'shared/can_edit_board' %>
       <% else %>

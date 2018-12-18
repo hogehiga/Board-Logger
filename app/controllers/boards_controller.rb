@@ -102,6 +102,6 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params[:board].permit(:location, :user_id)
+    params[:board].permit(:location, :user_id, :latitude, :longitude)
   end
 end

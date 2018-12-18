@@ -20,3 +20,6 @@
 //headerでドロッブダウン機能を有効にするために
 //= require jquery
 //= require bootstrap
+function getCSRFtoken(){
+  return $("meta[name=csrf-token]").attr("content");
+}
