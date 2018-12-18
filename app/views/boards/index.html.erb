@@ -32,7 +32,7 @@
           <% @boards.each do |boards| %>
           <li class="list-group-item">
             <% if @user == current_user %>
-              <%= link_to boards.location, boards_show2_path(boards.id), class: "btn btn-link", style: "width: 80%;" %>
+              <%= link_to boards.location, boards_show_path(boards.id), class: "btn btn-link", style: "width: 80%;" %>
               <%= form_for(boards, url: boards_search_path, html: {method: "get"}) do %>
                 <%= hidden_field_tag :board_id, boards.id %>
                 <%= submit_tag '共有', class: "btn btn-info" %>
@@ -47,7 +47,7 @@
             <ul class="list-group" style="max-width: 300px;">
               <% @middle.each do |middle| %>
                 <li class="list-group-item">
-                  <%= link_to middle.board.location, boards_show2_path(middle.board.id), class: "btn btn-link", style: "width: 80%;" %>
+                  <%= link_to middle.board.location, boards_show_path(middle.board.id), class: "btn btn-link", style: "width: 80%;" %>
                 </li>
               <% end %>
             </ul>

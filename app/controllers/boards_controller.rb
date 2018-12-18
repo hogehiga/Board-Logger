@@ -9,7 +9,7 @@ class BoardsController < ApplicationController
     @newBoard = Board.new(user_id: current_user.id)
   end
 
-  def show2
+  def show
     @board = Board.find(params[:id])
     @user = @board.user
     @wave = Wave.where(board_id: params[:id]).page(params[:page]).per(2)
