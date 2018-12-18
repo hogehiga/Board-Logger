@@ -14,7 +14,6 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     @user = @board.user
     @wave = Wave.where(board_id: params[:id])
-
     @manner = Manner.where(board_id: params[:id])
 
     @mood = Mood.where(board_id: params[:id]).last
@@ -85,7 +84,7 @@ class BoardsController < ApplicationController
     @longitude = params[:longitude]
     @board = Board.new(params[:board].permit(:location, :user_id,:latitude,:longitude))
     if @board.save
-      redirect_to board_path(@board.user_id)
+      redirect_to board_path(@board.user_id)# QUESTION:
     else
       p @board.errors.full_messages
       redirect_to board_path(@board.user_id)

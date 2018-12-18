@@ -15,8 +15,6 @@
       </p>
       <% if @user == current_user %>
         <!--<%=link_to "my location",onClick: "geoFindMe();"%>-->
-      
-        <div id="out"></div>
       <% end %>
       <h1><%= @board.location %></h1>
 
@@ -87,6 +85,7 @@
       <p>
         <%= link_to "戻る", root_path %>
       </p>
+      <%= link_to "GoogleMapへGo","https://www.google.com/maps/dir/?api=1&destination=" + @board.latitude.to_s + "," + @board.longitude.to_s,:target=>["_blank"] %>
     </div>
 
   </div><!--Bootstrapのグリッドシステムの対象範囲-->
