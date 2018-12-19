@@ -3,7 +3,8 @@
   <div class="container-fluid">  <!-- スマホで表示できるように、container から container-fluidに変更-->
     <nav>
       <ul class="nav navbar-nav navbar-left">
-        <li><%= link_to "NAMI LOG", root_path, id: "logo" %> </li>
+        <li>
+          <%= link_to "NAMI LOG", root_path, id: "logo" %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right" >
         <% if logged_in? %><!--ログインされていたら表示する-->
