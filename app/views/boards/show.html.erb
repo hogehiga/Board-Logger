@@ -7,7 +7,6 @@
   </head>
 
   <body>
-    <%= link_to "GoogleMapへGo","https://www.google.com/maps/dir/?api=1&destination=" +@board.latitude.to_s + ',' + @board.longitude.to_s ,:target=>["_blank"] %>
 
     <% if @user == current_user %>
       <%= render 'shared/can_edit_board' %>
