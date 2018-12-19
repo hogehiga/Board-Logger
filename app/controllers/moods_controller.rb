@@ -3,13 +3,13 @@ class MoodsController < ApplicationController
   def create
     @mood = Mood.new(mood_prams)
     @mood.save
-    redirect_to boards_show2_path(params[:mood]['board_id'])
+    redirect_to boards_show_path(params[:mood]['board_id'])
   end
 
   def destroy
     @mood = Mood.find(params[:id])
     @mood.delete
-    redirect_to boards_show2_path(@mood.board_id)
+    redirect_to boards_show_path(@mood.board_id)
   end
 
   private

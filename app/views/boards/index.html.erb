@@ -3,29 +3,19 @@
     <title>サーフポイント一覧</title>
     <%= stylesheet_link_tag "boards", :media => "all" %>
   </head>
-
   <body>
     <div class="jumbotron mt-4">
       <h1>サーフポイント一覧</h1>
     </div>
-
     <div class="box11">
-
       <% if @user  == current_user %>
-
-
       <!-- Sign in, Log in に成功したらでるメッセージ -->
-
       <p><% flash[:success] %></p>
-
-
         <div class = "showPC"><!--PCの画面とスマホの画面を分けたいから-->
         <h1> <%= @user.name %> さんのページ </h1>
         </div>
-
-
         <% if @user == current_user %>
-          <%= form_for(@newBoard, :url => {:action => 'create'}) do |f| %>
+          <%= form_for @newBoard do |f| %>
             <div class="form-inline">
               <%= f.label "サーフポイントの作成", class:"sr-only" %>
               <%= f.text_field :location, class: "form-control mb-2 mr-sm-2", style: "width: 80%; font-size: 30px;", placeholder: "サーフポイントの作成" %>
@@ -33,65 +23,36 @@
               <%= f.hidden_field :latitude, id:"latitude" %>
               <%= f.hidden_field :longitude, id:"longitude" %>
               <%= f.submit "+", class: "btn btn-primary mb-2" %>
-              <!-- <input type="submit" value="+" class="btn btn-primary mb-2" onClick="geoFindMe()" > -->
               <div id="out"></div>
             </div>
           <% end %>
         <% end %>
-
-
         <ul class="list-group">
         <!--<ul class="list-group"> -->
           <% @boards.each do |boards| %>
           <li class="list-group-item">
             <% if @user == current_user %>
-              <%= link_to boards.location, boards_show2_path(boards.id), class: "btn btn-link", style: "width: 80%;" %>
+              <%= link_to boards.location, boards_show_path(boards.id), class: "btn btn-link", style: "width: 80%;" %>
               <%= form_for(boards, url: boards_search_path, html: {method: "get"}) do %>
                 <%= hidden_field_tag :board_id, boards.id %>
                 <%= submit_tag '共有', class: "btn btn-info" %>
                 <%= link_to "削除", board_path(boards.id), method: :delete, class: "btn btn-danger", data: {confirm: "本当に削除しますか？"}%>
               <% end %>
-            <% else %>
-              <% @followers.each do |f| %>
-                <% if f.board_id == boards.id %>
-                    <%= link_to boards.location, boards_show_path(boards.id), style: "margin-left: 15px" %>
-                <% end %>
-              <% end %>
             <% end %>
           </li>
           <% end %>
         </ul>
-
         <% if @user == current_user and Middle.find_by(user_id: current_user.id) %>
           <h1>共有されているボード</h1>
             <ul class="list-group" style="max-width: 300px;">
               <% @middle.each do |middle| %>
                 <li class="list-group-item">
-                  <%= link_to middle.board.location, boards_show2_path(middle.board.id), class: "btn btn-link", style: "width: 80%;" %>
+                  <%= link_to middle.board.location, boards_show_path(middle.board.id), class: "btn btn-link", style: "width: 80%;" %>
                 </li>
               <% end %>
             </ul>
         <% end %>
-
-      <% else %>
-
-        <div class = "showPC"><!--PCの画面とスマホの画面を分けたいから-->
-          <h1> <%= @user.name %> さんのページ </h1>
-        </div>
-
-        <div class = "showPC"><!--PCの画面とスマホの画面を分けたいから-->
-          <h1> 許可がありません... </h1>
-        </div>
-
-        <!-- ログアウトする。home画面に戻る -->
-        <ul class="list-group" style="max-width: 220px;">
-          <li class="list-group-item">
-            <%= link_to "ホームに戻る", board_path(current_user.id) %>
-          </li>
-        </ul>
-
       <% end %>
-
     </div>
   </body>
 </html>

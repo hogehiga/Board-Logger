@@ -39,22 +39,30 @@
 
         .App{
             position: absolute;
-            top: 50%;
+            top: 0%;
             bottom: 70%;
             right: 0%;
             left: 0%;
 
             h1{
-                font-size:90px;
-                color: #F5F5F5;
-                position: relative;//application.scssが悪さしてるから
-                top: 0px;//application.scssが悪さしてるから
-                text-align: center;
+              font-size:140px;
+              color: #FFFFFF;
+              position: relative;//application.scssが悪さしてるから
+              top: 0px;//application.scssが悪さしてるから
+              text-align: center;
+              font-weight: 600;
+              font-family: "Comic Sans MS";
+              text-stroke: 1px #6495ED;
+              -webkit-text-stroke: 1px #6495ED;
             }
             h2{
-                color: #F5F5F5;
-                font-size:50px;
-                text-align:center;
+              color: #6495ED;
+              font-weight: 800;
+              font-size:50px;
+              text-align:center;
+              font-family: "Comic Sans MS";
+              text-stroke: 1px #6495ED;;
+              -webkit-text-stroke: 1px #6495ED;;
             }
         }
     }

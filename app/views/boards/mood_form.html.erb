@@ -6,24 +6,21 @@
 
   <body>
     <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
-    <div class="box11">
-
-    <h1 style="margin-left: 20px;"><%= @board.location %></h1>
-
-    <h3>サーフポイントの雰囲気</h3>
-    <!-- サーフポイントの雰囲気を入力するための入力フォーム -->
-    <%= form_for @newMood do |f| %>
-      <div class="form-horizontal">
-        <%= f.text_field :mood, class: "form-control mb-2 mr-sm-2" , placeholder: "サーフポイント雰囲気" %>
-        <%= f.hidden_field :board_id %>
-        <%= f.submit "編集", class: "btn btn-primary mb-2 btn-sm-2"%>
-      </div>
-    <% end %>
-
+      <div class="box11">
+      <h1 style="margin-left: 20px;"><%= @board.location %></h1>
+      <h3>サーフポイントの雰囲気</h3>
+      <!-- サーフポイントの雰囲気を入力するための入力フォーム -->
+      <%= form_for @newMood do |f| %>
+        <div class="form-horizontal">
+          <%= f.text_field :mood, class: "form-control mb-2 mr-sm-2" , placeholder: "サーフポイント雰囲気" %>
+          <%= f.hidden_field :board_id %>
+          <%= f.submit "編集", class: "btn btn-primary mb-2 btn-sm-2"%>
+        </div>
+      <% end %>
       <p>
-        <%= link_to "表示ページに戻る", boards_show2_path(@board.id) %>
+        <%= link_to "表示ページに戻る", boards_show_path(@board.id) %>
       </p>
-    </div>
-  </div><!--Bootstrapのグリッドシステムの対象範囲-->
+      </div>
+    </div><!--Bootstrapのグリッドシステムの対象範囲-->
   </body>
 </html>

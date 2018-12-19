@@ -1,7 +1,6 @@
 <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
   <div class="box11">
     <h1><%= @board.location %></h1>
-
     <h3>波情報</h3>
     <!-- 波情報を出力するためのテーブル -->
     <% @wave.each do |wave| %>
@@ -44,8 +43,6 @@
       </table>
     <% end %>
     <%= paginate @wave %>
-
-
     <h3>サーフポイントの雰囲気</h3>
     <!-- サーフポイントの雰囲気を出力するためのテーブル -->
     <table class="table table-striped">
@@ -55,7 +52,6 @@
         </tr>
       <% end %>
     </table>
-
     <h3>エントリーの仕方</h3>
     <!-- エントリを出力するためのテーブル -->
     <table class="table table-striped">
@@ -66,7 +62,7 @@
       <% end %>
     </table>
     <p>
-      <%= link_to "戻る", board_path %>
+      <%= link_to "ポイントリストへ戻る", board_path %>
     </p>
   </div>
 </div><!--Bootstrapのグリッドシステムの対象範囲-->

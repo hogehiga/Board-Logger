@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  post 'positions/create'
-  get 'positions/show'
   root 'home#index'
 
   get    '/login',   to: 'sessions#new',     as: 'login'
@@ -11,8 +9,6 @@ Rails.application.routes.draw do
   get 'boards/search', to: 'boards#search', as: 'boards_search'
   get 'boards/myboard',  to: 'boards#index', as: 'board'
   get 'boards/show/:id', to: 'boards#show', as: 'boards_show'
-  get 'boards/show2/:id', to: 'boards#show2', as: 'boards_show2'
-  # get 'boards/input/:id', to: 'boards#input', as: 'boards_input'
   get 'boatds/wave_form/:id', to: 'boards#wave_form', as: 'wave_form'
   get 'boards/entry_form/:id', to: 'boards#entry_form', as: 'entry_form'
   get 'boards/mood_form/:id', to: 'boards#mood_form', as: 'mood_form'
