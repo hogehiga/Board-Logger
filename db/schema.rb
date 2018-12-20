@@ -29,16 +29,6 @@ ActiveRecord::Schema.define(version: 2018_12_17_054646) do
     t.index ["board_id"], name: "index_manners_on_board_id"
   end
 
-  create_table "maps", force: :cascade do |t|
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
-    t.integer "board_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["board_id"], name: "index_maps_on_board_id"
-  end
-
   create_table "middles", force: :cascade do |t|
     t.integer "user_id"
     t.integer "board_id"
@@ -52,24 +42,6 @@ ActiveRecord::Schema.define(version: 2018_12_17_054646) do
     t.integer "board_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.string "image"
-    t.integer "manner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["manner_id"], name: "index_photos_on_manner_id"
-  end
-
-  create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "users", force: :cascade do |t|
