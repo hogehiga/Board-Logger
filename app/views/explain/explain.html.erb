@@ -3,115 +3,130 @@
     <!--scssを読み込む-->
     <%= stylesheet_link_tag "explain", :media => "all" %>
     </head>
-
     <body>
-    <!--
-        <%= link_to "Home画面へ", root_path %>
-    -->
+      <div class="NAMI_LOG">
+        <%= image_tag "icon.png", :size => "200x40" %>
+        <h2>サーファーのための記録アプリ</h2>
+      </div>
+      <!--NAMILOG のユーザにとっての価値-->
+      <div class="Value_NAMILOG">
+        <h1>NAMI LOGとは？</h1>
 
-        <div class="NAMI_LOG">
-<!--            <h1>NAMI LOG</h1>-->
-          <%= image_tag "icon.png", :size => "200x40" %>
-          <h2>サーファーのための記録アプリ</h2>
+        <div class="box12">
+          <h2>サーフポイントに対して</h2>
+          <h3><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 波情報を見返したい</h3>
+          <h3><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 仲間内で共有したい</h3>
+          <h3><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 迷わずに行きたい</h3>
         </div>
+        <h2>という、<br>サーファーの気持ちを叶えます。</h2>
+      </div>
 
-        <!--NAMILOG のユーザにとっての価値-->
-        <div class="Value_NAMILOG">
-          <h1>NAMI LOGとは？</h1>
+      <!--下に行けるよマーク(下には使い方があると示す)-->
+      <span class="glyphicon glyphicon-chevron-down" id="arrow_bottom1" aria-hidden="true"  ></span>
+      <span class="glyphicon glyphicon-chevron-down" id="arrow_bottom2" aria-hidden="true" ></span>
+      <div class="Explain_arrow_bottom">
+      <h3>使い方</h3>
+      </div>
 
-          <div class="box12">
-            <h2>サーフポイントに対して</h2>
-            <h3><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 波情報を見返したい</h3>
-            <h3><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 迷わずに行きたい</h3>
-            <h3><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 仲間内で共有したい</h3>
-          </div>
-          <h2>という、<br>サーファーの気持ちを叶えます。</h2>
-        </div>
-
-        <!--下に行けるよマーク(下には使い方があると示す)-->
-        <span class="glyphicon glyphicon-chevron-down" id="arrow_bottom1" aria-hidden="true"  ></span>
-        <span class="glyphicon glyphicon-chevron-down" id="arrow_bottom2" aria-hidden="true" ></span>
-        <div class="Explain_arrow_bottom">
-        <h3>使い方</h3>
-        </div>
-
-        <!--ここから下は使い方を載せる-->
-        <!--横線-->
-        <HR align=center SIZE=2 width="100%">
-        <div class="box30">
-          <div class ="explain">
-            <!--説明1-->
-            <div class="box-title">マイページ</div>
-            <p>
-              新規登録またはログインすると
-              マイページに行きます。</br>
-              ここでは訪れたサーフポイントの作成が行えます。</br>
-            </p>
-            <!--説明1の画像-->
-            <div style="text-align: center;">
-              <%= image_tag "explain_App/mypage.png" %>
-            </div>
-            <!--説明1の説明文-->
+      <!--ここから下は使い方を載せる-->
+      <!--横線-->
+      <HR align=center SIZE=2 width="100%">
+      <div class="box30">
+        <div class ="explain">
+          <!--説明1-->
+          <div class="box-title">マイページ</div>
+          <!--説明1の説明文-->
+          <p>
+            ここでは訪れたサーフポイントの作成ができます。</br>
+            現在地の位置情報をとるので、位置情報サービスをONにして
+            訪れたサーフポイントの場所で作成してください。
+          </p>
+          <!--説明1の画像-->
+          <div style="text-align: center;">
+            <%= image_tag "explain_App/mypage.png" %>
           </div>
         </div>
+      </div>
 
-        <!--横線-->
-        <HR align=center SIZE=2 width="100%">
-        <!--説明2-->
-        <div class="box30">
-          <div class ="explain">
-              <!--説明2の説明文-->
-              <div class="box-title">サーフポイントの波情報を記録できる</div>
-              <!--説明2の画像-->
-              <div style="text-align: center;">
-                <%= image_tag "explain_App/nami.jpg"%>
-              </div>
+      <!--横線-->
+      <HR align=center SIZE=2 width="100%">
+      <div class="box30">
+        <div class ="explain">
+          <!--説明2-->
+          <div class="box-title">サーフポイントの波情報を記録できる</div>
+          <!--説明2の説明文-->
+          <p>
+            項目を選択していくことで、その日の波の状況を記録することができます。
+          </p>
+          <!--説明2の画像-->
+          <div style="text-align: center;">
+            <%= image_tag "explain_App/nami_input.jpg"%>
+          </div>
+          </br>
+          <div style="text-align: center;">
+            <%= image_tag "explain_App/nami.jpg"%>
           </div>
         </div>
+      </div>
 
-        <!--横線-->
-        <HR align=center SIZE=2 width="100%">
-        <!--説明3-->
-        <div class="box30">
-          <div class ="explain">
-            <!--説明3の説明文-->
-            <div class="box-title">サーフポイントまでのルートがわかる</div>
-            <!--説明3の画像-->
-            <div style="text-align: center;">
-              <%= image_tag "explain_App/routes.jpg"%>
-            </div>
-            <br>
+      <!--横線-->
+      <HR align=center SIZE=2 width="100%">
+      <div class="box30">
+        <div class ="explain">
+          <!--説明3-->
+          <div class="box-title">サーフポイントが共有できる</div>
+          <!--説明3の説明文-->
+          <p>
+            <!--サーフポイント一覧で共有ボタンを押すとユーザーの検索画面</br>
+            へいきます。-->
+            共有したい相手を探し、その人と共有することで自分のサーフ</br>
+            ポイントの情報を見せることができます。
+          </p>
+          <!--説明3の画像-->
+          <div style="text-align: center;">
+            <%= image_tag "explain_App/kyouyu.png"%>
+          </div>
+          </br>
+          <div style="text-align: center;">
+            <%= image_tag "explain_App/kyouyu2.jpg"%>
           </div>
         </div>
+      </div>
 
-        <!--横線-->
-        <HR align=center SIZE=2 width="100%">
-        <!--説明4-->
-        <div class="box30">
-          <div class ="explain">
-              <!--説明4の説明文-->
-              <div class="box-title">サーフポイントが共有できる</div>
-              <!--説明4の画像-->
-              <div style="text-align: center;">
-                <%= image_tag "explain_App/kyouyu.png"%>
-              </div>
+      <!--横線-->
+      <HR align=center SIZE=2 width="100%">
+      <div class="box30">
+        <div class ="explain">
+          <!--説明4-->
+          <div class="box-title">サーフポイントまでのルートがわかる</div>
+          <!--説明4の説明文-->
+          <p>
+            サーフポイントを作成したとき一緒に現在地も登録されます。</br>
+            ルートボタンを押すとマップへ移動し、サーフポイントまでの</br>
+            ルートを確認できます。
+          </p>
+          <!--説明4の画像-->
+          <div style="text-align: center;">
+            <%= image_tag "explain_App/routes.jpg"%>
+          </div>
+          </br>
+          <div style="text-align: center;">
+            <%= image_tag "explain_App/map.jpg"%>
           </div>
         </div>
+      </div>
+      <!--横線-->
+      <HR align=center SIZE=2 width="100%">
 
-        <!--横線-->
-        <HR align=center SIZE=2 width="100%">
-
-        <% if logged_in?%><!--ログインしていたら表示する-->
-            <%= link_to "ポイントリストに戻る", root_path, class: "btn btn-info " %>
-        <% end %>
-        <% unless logged_in? %><!--ログインされていいなかったら表示する-->
-            <div class = "Button"><!--ボタンを中央揃えにするために-->
-                <!--SignUpボタン-->
-                <%= link_to "Sign up", new_user_path, class: "btn btn-info " , id:"SignUp" %>
-            </div>
-        <% end %>
-
-
+      <% if logged_in?%><!--ログインしていたら表示する-->
+        <div class = "Button"><!--ボタンを中央揃えにするために-->
+          <%= link_to "ポイントリストに戻る", board_path, class: "btn btn-info ", id:"MyPage" %>
+        </div>
+      <% else %><!--ログインされていいなかったら表示する-->
+        <div class = "Button"><!--ボタンを中央揃えにするために-->
+          <!--SignUpボタン-->
+          <%= link_to "新規作成へ！", new_user_path, class: "btn btn-info ", id:"SignUp" %>
+        </div>
+      <% end %>
     </body>
-
 </html>

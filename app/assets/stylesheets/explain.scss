@@ -13,13 +13,13 @@
     //　画面サイズが767px以下の場合読み込む
 
     body {
-      background-color: #a0f7ff;
+      background-color: #add8e6;
     }
 
     .NAMI_LOG{
         margin-top:0%;
-        padding-bottom:1vh;
-        background-color: rgb(130, 207, 233);
+        padding-bottom: 0px;
+        background-color: rgb(10, 189, 230);
         h1{
             font-size:13vw; //vw 画面の横のサイズに合わせて文字のサイズを変更
             margin-top:1vh;
@@ -125,6 +125,7 @@
     .box30 p {
       padding: 15px 20px;
       margin: 0;
+      font-size:55px;
     }
 
 
@@ -143,6 +144,20 @@
         margin-bottom:4vh;
     }
 
+    //ポイントリストに行く時のボタン
+    .btn#MyPage{
+      //ボタンを中央揃えにする
+      width:80%; //ボタンの横の大きさを指定
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+
+      font-size:70px;//ボタンの中の文字の大きさを変更
+      text-align: center;
+
+      margin-bottom:4vh;
+    }
+
     .box12 {
       padding: 0.5em 1em;
       margin: 2em 1em 1em 1em;
@@ -157,6 +172,5 @@
       margin: 0;
       padding: 0;
     }
-
 
 }
