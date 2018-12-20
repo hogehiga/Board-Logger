@@ -3,30 +3,32 @@
     <div class="alert alert-danger">
       <%= pluralize(@user.errors.count, " つのエラーがあります") %>
     </div>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <%if msg =="Name translation missing: ja.activerecord.errors.models.user.attributes.name.blank" %>
-         <li>ユーザーネームを入力してください</li>
+    <div class ="error">
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <%if msg =="Name translation missing: ja.activerecord.errors.models.user.attributes.name.blank" %>
+          <li>ユーザーネームを入力してください</li>
+        <% end %>
+        <%if msg =="Email translation missing: ja.activerecord.errors.models.user.attributes.email.blank" %>
+          <li>Eメールを入力してください</li>
+        <% end %>
+        <%if msg =="Email translation missing: ja.activerecord.errors.models.user.attributes.email.invalid" %>
+          <li>Eメールが間違っています</li>
+        <% end %>
+        <%if msg =="Email translation missing: ja.activerecord.errors.models.user.attributes.email.taken" %>
+          <li>このEメールは登録されています</li>
+        <% end %>
+        <%if msg =="Password translation missing: ja.activerecord.errors.models.user.attributes.password.blank" %>
+          <li>パスワードを入力してください</li>
+        <% end %>
+        <%if msg =="Password confirmation translation missing: ja.activerecord.errors.models.user.attributes.password_confirmation.confirmation" %>
+          <li>パスワードが一致していません</li>
+        <% end %>
+        <%if msg =="Password translation missing: ja.activerecord.errors.models.user.attributes.password.too_short" %>
+          <li>パスワードは6文字以上にしてください</li>
+        <% end %>
       <% end %>
-      <%if msg =="Email translation missing: ja.activerecord.errors.models.user.attributes.email.blank" %>
-         <li>Eメールを入力してください</li>
-      <% end %>
-      <%if msg =="Email translation missing: ja.activerecord.errors.models.user.attributes.email.invalid" %>
-         <li>Eメールが間違っています</li>
-      <% end %>
-      <%if msg =="Email translation missing: ja.activerecord.errors.models.user.attributes.email.taken" %>
-         <li>このEメールは登録されています</li>
-      <% end %>
-      <%if msg =="Password translation missing: ja.activerecord.errors.models.user.attributes.password.blank" %>
-         <li>パスワードを入力してください</li>
-      <% end %>
-      <%if msg =="Password confirmation translation missing: ja.activerecord.errors.models.user.attributes.password_confirmation.confirmation" %>
-         <li>パスワードと確認用パスワードが一致しません</li>
-      <% end %>
-      <%if msg =="Password translation missing: ja.activerecord.errors.models.user.attributes.password.too_short" %>
-         <li>パスワードは6文字以上にしてください</li>
-      <% end %>
-    <% end %>
-    </ul>
+      </ul>
+    </div>
   </div>
 <% end %>
