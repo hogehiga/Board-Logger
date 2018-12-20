@@ -1,6 +1,9 @@
 <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
   <div class="box11">
     <h1><%= @board.location %></h1>
+    <!--ポイントリストまでのリンク-->
+    <%= link_to "ルート","https://www.google.com/maps/dir/?api=1&destination=" +@board.latitude.to_s + ',' + @board.longitude.to_s ,:target=>["_blank"] ,class: "btn btn-success"%>
+
     <h3>波情報</h3>
     <!-- 波情報を出力するためのテーブル -->
     <% @wave.each do |wave| %>
@@ -62,7 +65,7 @@
       <% end %>
     </table>
     <p>
-      <%= link_to "ポイントリストへ戻る", board_path %>
+      <%= link_to "ポイントリストへ戻る", board_path ,data: {"turbolinks" => false}%>
     </p>
   </div>
 </div><!--Bootstrapのグリッドシステムの対象範囲-->
