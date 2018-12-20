@@ -9,8 +9,12 @@ window.onpageshow = function geoFindMe() {
   function success(position) {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
-    document.getElementById("latitude").value = latitude;
-    document.getElementById("longitude").value = longitude;
+    console.log(latitude);
+    console.log(longitude)
+    //document.getElementById("latitude").value = latitude;
+    //document.getElementById("longitude").value = longitude;
+    document.getElementsByClassName("latitude").value = latitude;
+    document.getElementsByClassName("longitude").value = longitude;
     //ここで呼び出したい。
     output.innerHTML = '<p>緯度は' + latitude + '° <br>経度は ' + longitude + '°</p>';
   }
