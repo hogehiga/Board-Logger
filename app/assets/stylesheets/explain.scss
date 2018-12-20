@@ -12,6 +12,10 @@
 @media screen and (max-device-width:767px) {
     //　画面サイズが767px以下の場合読み込む
 
+    body {
+      background-color: #a0f7ff;
+    }
+
     .NAMI_LOG{
         margin-top:0%;
         padding-bottom:1vh;
@@ -84,20 +88,43 @@
         }
     }
 
-
-
     //使い方の説明
     //説明について
     .explain{
         //画像を調整
         img{
-            width:80vw;//画面の横サイズの80%に合わせる
+            width:60vw;//画面の横サイズの80%に合わせる
             height:auto;
+            margin: 0 auto;
         }
         //説明文を調整
         h3{
-            font-size:6vw;
+            font-size:5vw;
         }
+
+        h4{
+            font-size:4vw;
+        }
+
+    }
+
+    .box30 {
+      margin: 2em 10px 10px 10px;
+      background: #FFFFFF;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+    }
+    .box30 .box-title {
+      font-size: 50px;
+      background: #5fc2f5;
+      padding: 4px;
+      text-align: center;
+      color: #FFF;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+    .box30 p {
+      padding: 15px 20px;
+      margin: 0;
     }
 
 
