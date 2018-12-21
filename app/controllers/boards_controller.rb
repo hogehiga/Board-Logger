@@ -54,7 +54,6 @@ class BoardsController < ApplicationController
   def destroy
     @board = Board.find(params[:format])
     @board.destroy
-    flash[:success] = "Board deleted"
 
     redirect_to board_path
   end
