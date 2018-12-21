@@ -9,8 +9,6 @@
     </div>
     <div class="box11">
       <% if @user  == current_user %>
-      <!-- Sign in, Log in に成功したらでるメッセージ -->
-      <p><% flash[:success] %></p>
         <div class = "showPC"><!--PCの画面とスマホの画面を分けたいから-->
         <h1> <%= @user.name %> さんのページ </h1>
         </div>
