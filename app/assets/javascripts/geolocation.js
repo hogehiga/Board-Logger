@@ -1,5 +1,4 @@
-
-window.onload = function geoFindMe() {
+window.onpageshow = function geoFindMe() {
   var output = document.getElementById("out");
   if (!navigator.geolocation){
     //output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
@@ -10,17 +9,14 @@ window.onload = function geoFindMe() {
   function success(position) {
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
-    //document.getElementById("latitude").value = position.coords.latitude;
-    //document.getElementById("longitude").value = position.coords.longitude;
     document.getElementById("latitude").value = latitude;
     document.getElementById("longitude").value = longitude;
-
     //ここで呼び出したい。
-    output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
+    output.innerHTML = '<p>緯度は' + latitude + '° <br>経度は ' + longitude + '°</p>';
   }
 
   function error(_error) {
-    output.innerHTML = "Unable to retrieve your location";
+    output.innerHTML = "位置情報を測定できませんでした。";
 
     switch(_error.code){
       case 1:
@@ -34,8 +30,6 @@ window.onload = function geoFindMe() {
       break;
     }
   }
-debugger;
-  output.innerHTML = "<p>Locating…</p>";
-
+  output.innerHTML = "<p>位置情報を測定中...</p>";
   navigator.geolocation.getCurrentPosition(success, error);
 }
