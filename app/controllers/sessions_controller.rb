@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       remember user
       redirect_to board_path
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'Eメールとパスワードが一致しませんでした。'
       render 'new'
     end
   end
