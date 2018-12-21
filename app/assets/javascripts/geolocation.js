@@ -1,6 +1,7 @@
 window.onpageshow = function geoFindMe() {
-  var output = document.getElementById("out");
-  var output_show = document.getElementsByClassName("out_show");
+  var output = document.getElementById("out");//index.html.erbにある
+  var output_show = document.getElementsByClassName("out_show");//show.htmlにある
+  var Link = document.getElementsByClassName("link");//show.htmlにある
   if (!navigator.geolocation){
     //output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
     alert("位置情報は，あなたのブラウザに対応していません。")
@@ -25,6 +26,16 @@ window.onpageshow = function geoFindMe() {
       output_show[0].innerHTML = '<p>緯度は' + latitude + '° <br>経度は ' + longitude + '°</p>';
       output_show[1].innerHTML = latitude;
       output_show[2].innerHTML = longitude;
+
+      //ここから下18:00分
+      var des_latitude = document.getElementsByClassName("des_latitude");
+      console.log("出力できるか? 緯度 = "+des_latitude[0].textContent);
+      var des_longitude = document.getElementsByClassName("des_longitude");
+      console.log("出力できるか? 経度 = "+ des_longitude[0].textContent);
+
+      Link[0].innerHTML = "<a href='https://www.google.com/maps/dir/?api=1&origin=" +latitude+ "," +longitude + "&destination=" +des_latitude[0].textContent+ ',' + des_longitude[0].textContent+  "'" + "> ルート</a>"
+      //ここから上18:00分
+      console.log(latitude);
     }
   }
 
@@ -54,3 +65,13 @@ window.onpageshow = function geoFindMe() {
   }
   navigator.geolocation.getCurrentPosition(success, error);
 }
+
+/*
+function GoogleURL(){
+  alert("GoogleURLが呼び出された");
+  var des_latitude = document.getElementsByClassName("des_latitude");
+  console.log("出力できるか? 緯度 = "+des_latitude[0].textContent);
+  var des_longitude = document.getElementsByClassName("des_longitude");
+  console.log("出力できるか? 経度 = "+ des_longitude[0].textContent);
+}
+*/
