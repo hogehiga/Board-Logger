@@ -27,11 +27,6 @@ window.onpageshow = function geoFindMe() {
   }
 
   function error(_error) {
-    if(output){
-      output.innerHTML = "位置情報を測定できませんでした。";
-    }else if(output_show){
-      output_show.innerHTML = "位置情報を測定できませんでした。";
-    }
 
     switch(_error.code){
       case 1:

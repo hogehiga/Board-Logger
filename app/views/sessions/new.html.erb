@@ -5,27 +5,18 @@
   </head>
   <body>
     <div class="box11">
-
       <p><% flash[:danger] %></p>
-
       <h1>ログインページ</h1>
-
       <%= form_for(:session, url: login_path) do |f| %>
-
         <%= f.label :email,"Eメール" %>
         <%= f.email_field :email, class: "form-control mb-2 mr-sm-2" %>
-
         <%= f.label :password,"パスワード" %>
         <%= f.password_field :password, class: "form-control mb-2 mr-sm-2" %>
-
         <p>
           <%= f.submit "ログイン", class: "btn btn-primary mb-2" %>
         </p>
-
       <% end %>
-
       <p>アカウント作成していない方は <%= link_to "こちら", new_user_path %></p>
-
     </div>
   </body>
 </html>

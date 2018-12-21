@@ -46,11 +46,16 @@ class BoardsController < ApplicationController
     if @board.save
       redirect_to board_path
     else
-      redirect_to board_path
+      if @board.latitude.nil? or @board.longitude.nil?
+        flash[:danger] = '位置情報が取れませんでした。'
+        redirect_to board_path
+      else
+        redirect_to board_path
+      end
     end
   end
 
-# ボード削除用変数設定
+  # ボード削除用変数設定
   def destroy
     @board = Board.find(params[:format])
     @board.destroy
