@@ -33,7 +33,7 @@ window.onpageshow = function geoFindMe() {
       var des_longitude = document.getElementsByClassName("des_longitude");
       console.log("出力できるか? 経度 = "+ des_longitude[0].textContent);
 
-      Link[0].innerHTML = "<a href='https://www.google.com/maps/dir/?api=1&origin=" +latitude+ "," +longitude + "&destination=" +des_latitude[0].textContent+ ',' + des_longitude[0].textContent+  "'" + "> ルート</a>"
+      Link[0].innerHTML = "<a href='https://www.google.com/maps/dir/?api=1&origin=" +latitude+ "," +longitude + "&destination=" +des_latitude[0].textContent+ ',' + des_longitude[0].textContent+  "'" + " target='_blank' class='btn btn-success'> ルート</a>"
       //ここから上18:00分
       console.log(latitude);
     }
