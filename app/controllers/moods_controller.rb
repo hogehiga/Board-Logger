@@ -14,7 +14,7 @@ class MoodsController < ApplicationController
 
   private
 
-  def  mood_prams
+  def mood_prams
     params[:mood].permit(:board_id, :mood)
   end
 end

@@ -1,21 +1,14 @@
 <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
   <div class="box11">
     <h1><%= @board.location %></h1>
-    <div class="out_show"></div><!--out_show[0]-->
-
-    <!--ポイントリストまでのリンク-->
-    <%=latitude_now = content_tag(:div,"" ,class: "out_show")%><!--out_show[1]-->
-    <%=longitude_now = content_tag(:div,"" ,class: "out_show")%><!--out_show[2]-->
-
-    <%= link_to "ルート","https://www.google.com/maps/dir/?api=1&origin="+latitude_now+","+ longitude_now +  "&destination="+ @board.latitude.to_s + ',' + @board.longitude.to_s ,:target=>["_blank"] ,class: "btn btn-success"%>
 
     <!--ここから下18:00分-->
-    <div class="des_latitude"><%=@board.latitude.to_s%></div>
-    <div class="des_longitude"><%=@board.longitude.to_s%></div>
+    <div class="des_latitude" hidden><%= @board.latitude.to_s%></div>
+    <div class="des_longitude" hidden><%= @board.longitude.to_s%></div>
     <div class = "link"></div>
     <!--ここから上18:00分-->
 
-    <h3>波情報<%= link_to "入力", wave_form_path(@board.id), class: "btn btn-info" %></h3>
+    <h3>波情報<%= link_to "入力", wave_form_path(@board.id), class: "btn btn-info", style: "margin-left: 144px" %></h3>
     <!-- 波情報を出力するためのテーブル -->
     <% @wave.each do |wave| %>
       <table class="table table-striped">
@@ -58,7 +51,7 @@
     <% end %>
     <%= paginate @wave %>
 
-    <h3>サーフポイントの雰囲気<%= link_to "入力", mood_form_path(@board.id), class: "btn btn-info", style: "margin-left: 9px;" %></h3>
+    <h3>サーフポイントの雰囲気<%= link_to "入力", mood_form_path(@board.id), class: "btn btn-info", style: "margin-left: 10px;" %></h3>
     <!-- サーフポイントの雰囲気を出力するためのテーブル -->
     <table class="table table-striped">
       <% if @mood.present? %>　　<!-- undefin method　'mood' nil:NillClassエラーを解消するため。nilであった場合に実行しないようにする。-->
@@ -69,7 +62,7 @@
       <% end %>
     </table>
 
-    <h3>エントリーの仕方<%= link_to "入力", entry_form_path(@board.id), class: "btn btn-info", style: "margin-left: 57px;" %></h3>
+    <h3>エントリーの仕方<%= link_to "入力", entry_form_path(@board.id), class: "btn btn-info", style: "margin-left: 60px;" %></h3>
     <!-- エントリを出力するためのテーブル -->
     <table class="table table-striped">
       <% @manner.each do |manner| %>

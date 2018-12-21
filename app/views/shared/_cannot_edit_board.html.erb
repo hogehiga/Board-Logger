@@ -1,8 +1,12 @@
 <div class="container-fluid"> <!--Bootstrapのグリッドシステムの対象範囲-->
   <div class="box11">
     <h1><%= @board.location %></h1>
-    <!--ポイントリストまでのリンク-->
-    <%= link_to "ルート","https://www.google.com/maps/dir/?api=1&destination=" +@board.latitude.to_s + ',' + @board.longitude.to_s ,:target=>["_blank"] ,class: "btn btn-success"%>
+
+    <!--ここから下18:00分-->
+    <div class="des_latitude" hidden><%= @board.latitude.to_s%></div>
+    <div class="des_longitude" hidden><%= @board.longitude.to_s%></div>
+    <div class = "link"></div>
+    <!--ここから上18:00分-->
 
     <h3>波情報</h3>
     <!-- 波情報を出力するためのテーブル -->

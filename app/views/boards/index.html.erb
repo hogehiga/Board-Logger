@@ -26,8 +26,7 @@
           <% end %>
         <% end %>
         <ul class="list-group">
-        <!--<ul class="list-group"> -->
-          <% @boards.each do |boards| %>
+          <% @boards.reverse_each do |boards| %>
           <li class="list-group-item">
             <% if @user == current_user %>
               <%= link_to boards.location, boards_show_path(boards.id),data: {"turbolinks" => false}, class: "btn btn-link", style: "width: 80%;" %>
@@ -43,7 +42,7 @@
         <% if @user == current_user and Middle.find_by(user_id: current_user.id) %>
           <h1>共有されているボード</h1>
             <ul class="list-group" style="max-width: 300px;">
-              <% @middle.each do |middle| %>
+              <% @middle.reverse_each do |middle| %>
                 <li class="list-group-item">
                   <%= link_to middle.board.location, boards_show_path(middle.board.id),data: {"turbolinks" => false}, class: "btn btn-link", style: "width: 80%;" %>
                 </li>
