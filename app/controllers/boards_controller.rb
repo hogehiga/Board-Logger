@@ -47,7 +47,7 @@ class BoardsController < ApplicationController
       redirect_to board_path
     else
       if @board.latitude.nil? or @board.longitude.nil?
-        flash[:danger] = '位置情報が取れませんでした。'
+        flash[:danger] = '位置情報が取れませんでした'
         redirect_to board_path
       else
         redirect_to board_path

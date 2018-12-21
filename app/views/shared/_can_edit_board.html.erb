@@ -10,7 +10,7 @@
 
     <h3>波情報<%= link_to "入力", wave_form_path(@board.id), class: "btn btn-info", style: "margin-left: 144px" %></h3>
     <!-- 波情報を出力するためのテーブル -->
-    <% @wave.reverse_each do |wave| %>
+    <% @wave.each do |wave| %>
       <table class="table table-striped">
         <caption align="left"><h3><%= wave.created_at.strftime("%Y年%-m月%-d日") %><%= link_to "削除", wave, method: :delete, class: "btn btn-danger mb-2 btn-sm", style: "margin-left: 70px;", data: {confirm: "本当に削除しますか？"}%></h3></caption>
         <tbody>
@@ -65,7 +65,7 @@
     <h3>エントリーの仕方<%= link_to "入力", entry_form_path(@board.id), class: "btn btn-info", style: "margin-left: 60px;" %></h3>
     <!-- エントリを出力するためのテーブル -->
     <table class="table table-striped">
-      <% @manner.reverse_each do |manner| %>
+      <% @manner.each do |manner| %>
         <tr>
           <td><%= manner.entry %></td>
           <td align="right" width="20"><%= link_to "削除", manner, method: :delete, class: "btn btn-danger mb-2 btn-sm", data: {confirm: "本当に削除しますか？"}%></td>
