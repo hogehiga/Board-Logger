@@ -4,13 +4,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
+    user = User.find_by(name: params[:session][:name])
     if user && user.authenticate(params[:session][:password])
       log_in user
       remember user
       redirect_to board_path
     else
-      flash.now[:danger] = 'Eメールとパスワードが一致しませんでした。'
+      flash.now[:danger] = 'ユーザーネームとパスワードが一致しませんでした。'
       render 'new'
     end
   end
