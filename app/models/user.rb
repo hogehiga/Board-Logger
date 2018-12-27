@@ -15,7 +15,7 @@ class User < ApplicationRecord
   class << self
     #検索する
     def search(search, user)
-      if search
+      unless search == "" or search.nil?
         User.where("name LIKE ?", "%#{search}%").where.not(name: "#{user}")
       end
     end
