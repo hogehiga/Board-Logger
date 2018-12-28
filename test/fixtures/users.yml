@@ -5,3 +5,9 @@ one:
 
 two:
   name: MyString
+
+search_test_one:
+  name: search_test_user1
+
+search_test_two:
+  name: search_test_user2
